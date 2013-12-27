@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B54F9F9A186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
+		B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */; };
+		B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9D186DFE4900324EFE /* UIKit.framework */; };
+		B54F9FA0186DFE4900324EFE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9F186DFE4900324EFE /* CoreData.framework */; };
+		B54F9FA6186DFE4900324EFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FA4186DFE4900324EFE /* InfoPlist.strings */; };
+		B54F9FA8186DFE4900324EFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FA7186DFE4900324EFE /* main.m */; };
+		B54F9FAC186DFE4900324EFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FAB186DFE4900324EFE /* AppDelegate.m */; };
+		B54F9FAF186DFE4900324EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FAD186DFE4900324EFE /* Main.storyboard */; };
+		B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */; };
+		B54F9FB5186DFE4900324EFE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB4186DFE4900324EFE /* MasterViewController.m */; };
+		B54F9FB8186DFE4900324EFE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB7186DFE4900324EFE /* DetailViewController.m */; };
+		B54F9FBA186DFE4900324EFE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FB9186DFE4900324EFE /* Images.xcassets */; };
+		B54F9FC1186DFE4900324EFE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9FC0186DFE4900324EFE /* XCTest.framework */; };
+		B54F9FC2186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
+		B54F9FC3186DFE4900324EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9D186DFE4900324EFE /* UIKit.framework */; };
+		B54F9FC4186DFE4900324EFE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9F186DFE4900324EFE /* CoreData.framework */; };
+		B54F9FCC186DFE4900324EFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FCA186DFE4900324EFE /* InfoPlist.strings */; };
+		B54F9FCE186DFE4900324EFE /* SimpleRadio_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B54F9FC5186DFE4900324EFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B54F9F8E186DFE4900324EFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B54F9F95186DFE4900324EFE;
+			remoteInfo = "SimpleRadio-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleRadio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B54F9F99186DFE4900324EFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B54F9F9D186DFE4900324EFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B54F9F9F186DFE4900324EFE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B54F9FA3186DFE4900324EFE /* SimpleRadio-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleRadio-iOS-Info.plist"; sourceTree = "<group>"; };
+		B54F9FA5186DFE4900324EFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B54F9FA7186DFE4900324EFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B54F9FA9186DFE4900324EFE /* SimpleRadio-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleRadio-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		B54F9FAA186DFE4900324EFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B54F9FAB186DFE4900324EFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B54F9FAE186DFE4900324EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B54F9FB1186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleRadio_iOS.xcdatamodel; sourceTree = "<group>"; };
+		B54F9FB3186DFE4900324EFE /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		B54F9FB4186DFE4900324EFE /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		B54F9FB6186DFE4900324EFE /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B54F9FB7186DFE4900324EFE /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B54F9FB9186DFE4900324EFE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B54F9FBF186DFE4900324EFE /* SimpleRadio-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SimpleRadio-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B54F9FC0186DFE4900324EFE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B54F9FC9186DFE4900324EFE /* SimpleRadio-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleRadio-iOSTests-Info.plist"; sourceTree = "<group>"; };
+		B54F9FCB186DFE4900324EFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleRadio_iOSTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B54F9F93186DFE4900324EFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */,
+				B54F9FA0186DFE4900324EFE /* CoreData.framework in Frameworks */,
+				B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */,
+				B54F9F9A186DFE4900324EFE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B54F9FBC186DFE4900324EFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54F9FC1186DFE4900324EFE /* XCTest.framework in Frameworks */,
+				B54F9FC4186DFE4900324EFE /* CoreData.framework in Frameworks */,
+				B54F9FC3186DFE4900324EFE /* UIKit.framework in Frameworks */,
+				B54F9FC2186DFE4900324EFE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B54F9F8D186DFE4900324EFE = {
+			isa = PBXGroup;
+			children = (
+				B54F9FA1186DFE4900324EFE /* SimpleRadio-iOS */,
+				B54F9FC7186DFE4900324EFE /* SimpleRadio-iOSTests */,
+				B54F9F98186DFE4900324EFE /* Frameworks */,
+				B54F9F97186DFE4900324EFE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B54F9F97186DFE4900324EFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */,
+				B54F9FBF186DFE4900324EFE /* SimpleRadio-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B54F9F98186DFE4900324EFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9F99186DFE4900324EFE /* Foundation.framework */,
+				B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */,
+				B54F9F9D186DFE4900324EFE /* UIKit.framework */,
+				B54F9F9F186DFE4900324EFE /* CoreData.framework */,
+				B54F9FC0186DFE4900324EFE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B54F9FA1186DFE4900324EFE /* SimpleRadio-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FAA186DFE4900324EFE /* AppDelegate.h */,
+				B54F9FAB186DFE4900324EFE /* AppDelegate.m */,
+				B54F9FAD186DFE4900324EFE /* Main.storyboard */,
+				B54F9FB3186DFE4900324EFE /* MasterViewController.h */,
+				B54F9FB4186DFE4900324EFE /* MasterViewController.m */,
+				B54F9FB6186DFE4900324EFE /* DetailViewController.h */,
+				B54F9FB7186DFE4900324EFE /* DetailViewController.m */,
+				B54F9FB9186DFE4900324EFE /* Images.xcassets */,
+				B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */,
+				B54F9FA2186DFE4900324EFE /* Supporting Files */,
+			);
+			path = "SimpleRadio-iOS";
+			sourceTree = "<group>";
+		};
+		B54F9FA2186DFE4900324EFE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FA3186DFE4900324EFE /* SimpleRadio-iOS-Info.plist */,
+				B54F9FA4186DFE4900324EFE /* InfoPlist.strings */,
+				B54F9FA7186DFE4900324EFE /* main.m */,
+				B54F9FA9186DFE4900324EFE /* SimpleRadio-iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B54F9FC7186DFE4900324EFE /* SimpleRadio-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */,
+				B54F9FC8186DFE4900324EFE /* Supporting Files */,
+			);
+			path = "SimpleRadio-iOSTests";
+			sourceTree = "<group>";
+		};
+		B54F9FC8186DFE4900324EFE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FC9186DFE4900324EFE /* SimpleRadio-iOSTests-Info.plist */,
+				B54F9FCA186DFE4900324EFE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B54F9F95186DFE4900324EFE /* SimpleRadio-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B54F9FD1186DFE4900324EFE /* Build configuration list for PBXNativeTarget "SimpleRadio-iOS" */;
+			buildPhases = (
+				B54F9F92186DFE4900324EFE /* Sources */,
+				B54F9F93186DFE4900324EFE /* Frameworks */,
+				B54F9F94186DFE4900324EFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SimpleRadio-iOS";
+			productName = "SimpleRadio-iOS";
+			productReference = B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B54F9FBE186DFE4900324EFE /* SimpleRadio-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B54F9FD4186DFE4900324EFE /* Build configuration list for PBXNativeTarget "SimpleRadio-iOSTests" */;
+			buildPhases = (
+				B54F9FBB186DFE4900324EFE /* Sources */,
+				B54F9FBC186DFE4900324EFE /* Frameworks */,
+				B54F9FBD186DFE4900324EFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B54F9FC6186DFE4900324EFE /* PBXTargetDependency */,
+			);
+			name = "SimpleRadio-iOSTests";
+			productName = "SimpleRadio-iOSTests";
+			productReference = B54F9FBF186DFE4900324EFE /* SimpleRadio-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B54F9F8E186DFE4900324EFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Jorge Leandro Perez";
+				TargetAttributes = {
+					B54F9FBE186DFE4900324EFE = {
+						TestTargetID = B54F9F95186DFE4900324EFE;
+					};
+				};
+			};
+			buildConfigurationList = B54F9F91186DFE4900324EFE /* Build configuration list for PBXProject "SimpleRadio-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B54F9F8D186DFE4900324EFE;
+			productRefGroup = B54F9F97186DFE4900324EFE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B54F9F95186DFE4900324EFE /* SimpleRadio-iOS */,
+				B54F9FBE186DFE4900324EFE /* SimpleRadio-iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B54F9F94186DFE4900324EFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54F9FBA186DFE4900324EFE /* Images.xcassets in Resources */,
+				B54F9FA6186DFE4900324EFE /* InfoPlist.strings in Resources */,
+				B54F9FAF186DFE4900324EFE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B54F9FBD186DFE4900324EFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54F9FCC186DFE4900324EFE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B54F9F92186DFE4900324EFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54F9FB8186DFE4900324EFE /* DetailViewController.m in Sources */,
+				B54F9FB5186DFE4900324EFE /* MasterViewController.m in Sources */,
+				B54F9FAC186DFE4900324EFE /* AppDelegate.m in Sources */,
+				B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */,
+				B54F9FA8186DFE4900324EFE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B54F9FBB186DFE4900324EFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B54F9FCE186DFE4900324EFE /* SimpleRadio_iOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B54F9FC6186DFE4900324EFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B54F9F95186DFE4900324EFE /* SimpleRadio-iOS */;
+			targetProxy = B54F9FC5186DFE4900324EFE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B54F9FA4186DFE4900324EFE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B54F9FA5186DFE4900324EFE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B54F9FAD186DFE4900324EFE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B54F9FAE186DFE4900324EFE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B54F9FCA186DFE4900324EFE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B54F9FCB186DFE4900324EFE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B54F9FCF186DFE4900324EFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B54F9FD0186DFE4900324EFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B54F9FD2186DFE4900324EFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
+				INFOPLIST_FILE = "SimpleRadio-iOS/SimpleRadio-iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B54F9FD3186DFE4900324EFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
+				INFOPLIST_FILE = "SimpleRadio-iOS/SimpleRadio-iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B54F9FD5186DFE4900324EFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimpleRadio-iOS.app/SimpleRadio-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SimpleRadio-iOSTests/SimpleRadio-iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B54F9FD6186DFE4900324EFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimpleRadio-iOS.app/SimpleRadio-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
+				INFOPLIST_FILE = "SimpleRadio-iOSTests/SimpleRadio-iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B54F9F91186DFE4900324EFE /* Build configuration list for PBXProject "SimpleRadio-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B54F9FCF186DFE4900324EFE /* Debug */,
+				B54F9FD0186DFE4900324EFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B54F9FD1186DFE4900324EFE /* Build configuration list for PBXNativeTarget "SimpleRadio-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B54F9FD2186DFE4900324EFE /* Debug */,
+				B54F9FD3186DFE4900324EFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B54F9FD4186DFE4900324EFE /* Build configuration list for PBXNativeTarget "SimpleRadio-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B54F9FD5186DFE4900324EFE /* Debug */,
+				B54F9FD6186DFE4900324EFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B54F9FB1186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodel */,
+			);
+			currentVersion = B54F9FB1186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodel */;
+			path = SimpleRadio_iOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B54F9F8E186DFE4900324EFE /* Project object */;
+}
