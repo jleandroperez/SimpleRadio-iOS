@@ -12,6 +12,8 @@
 	<dict>
 		<key>5216BAC8-57F6-4E50-BEC8-693BC236C5A1</key>
 		<string>https://github.com/jleandroperez/SimpleRadio-iOS.git</string>
+		<key>D007ABE8-B5C5-4B4B-84BD-3E04DB2AF575</key>
+		<string>https://github.com/Simperium/simperium-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SimpleRadio-iOS/SimpleRadio-iOS.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>5216BAC8-57F6-4E50-BEC8-693BC236C5A1</key>
 		<string>../../..</string>
+		<key>D007ABE8-B5C5-4B4B-84BD-3E04DB2AF575</key>
+		<string>../../Frameworks/simperium-ios</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jleandroperez/SimpleRadio-iOS.git</string>
@@ -28,6 +32,14 @@
 	<string>5216BAC8-57F6-4E50-BEC8-693BC236C5A1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D007ABE8-B5C5-4B4B-84BD-3E04DB2AF575</string>
+			<key>IDESourceControlWCCName</key>
+			<string>simperium-ios</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

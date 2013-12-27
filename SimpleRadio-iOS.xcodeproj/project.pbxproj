@@ -25,6 +25,7 @@
 		B54F9FC4186DFE4900324EFE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9F186DFE4900324EFE /* CoreData.framework */; };
 		B54F9FCC186DFE4900324EFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FCA186DFE4900324EFE /* InfoPlist.strings */; };
 		B54F9FCE186DFE4900324EFE /* SimpleRadio_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */; };
+		B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9FDF186DFF5D00324EFE /* libSimperium.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = B54F9F95186DFE4900324EFE;
 			remoteInfo = "SimpleRadio-iOS";
+		};
+		B54F9FDE186DFF5D00324EFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 264CD8FB135DFD7A00C51BAD;
+			remoteInfo = Simperium;
+		};
+		B54F9FE0186DFF5D00324EFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 264CD908135DFD7A00C51BAD;
+			remoteInfo = IntegrationTests;
+		};
+		B54F9FE2186DFF5D00324EFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5E8D33A1831237500AE2C5A;
+			remoteInfo = UnitTests;
+		};
+		B54F9FE5186DFF7B00324EFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 264CD8FA135DFD7A00C51BAD;
+			remoteInfo = Simperium;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -61,6 +90,7 @@
 		B54F9FC9186DFE4900324EFE /* SimpleRadio-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleRadio-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		B54F9FCB186DFE4900324EFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleRadio_iOSTests.m; sourceTree = "<group>"; };
+		B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simperium.xcodeproj; path = "Frameworks/simperium-ios/Simperium.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */,
 				B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */,
 				B54F9FA0186DFE4900324EFE /* CoreData.framework in Frameworks */,
 				B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */,
@@ -92,6 +123,7 @@
 		B54F9F8D186DFE4900324EFE = {
 			isa = PBXGroup;
 			children = (
+				B54F9FE4186DFF6900324EFE /* Simperium */,
 				B54F9FA1186DFE4900324EFE /* SimpleRadio-iOS */,
 				B54F9FC7186DFE4900324EFE /* SimpleRadio-iOSTests */,
 				B54F9F98186DFE4900324EFE /* Frameworks */,
@@ -166,6 +198,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B54F9FD8186DFF5D00324EFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FDF186DFF5D00324EFE /* libSimperium.a */,
+				B54F9FE1186DFF5D00324EFE /* IntegrationTests.xctest */,
+				B54F9FE3186DFF5D00324EFE /* UnitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B54F9FE4186DFF6900324EFE /* Simperium */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */,
+			);
+			name = Simperium;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,6 +230,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B54F9FE6186DFF7B00324EFE /* PBXTargetDependency */,
 			);
 			name = "SimpleRadio-iOS";
 			productName = "SimpleRadio-iOS";
@@ -229,6 +280,12 @@
 			mainGroup = B54F9F8D186DFE4900324EFE;
 			productRefGroup = B54F9F97186DFE4900324EFE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B54F9FD8186DFF5D00324EFE /* Products */;
+					ProjectRef = B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B54F9F95186DFE4900324EFE /* SimpleRadio-iOS */,
@@ -236,6 +293,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B54F9FDF186DFF5D00324EFE /* libSimperium.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSimperium.a;
+			remoteRef = B54F9FDE186DFF5D00324EFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B54F9FE1186DFF5D00324EFE /* IntegrationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = IntegrationTests.xctest;
+			remoteRef = B54F9FE0186DFF5D00324EFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B54F9FE3186DFF5D00324EFE /* UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.xctest;
+			remoteRef = B54F9FE2186DFF5D00324EFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B54F9F94186DFE4900324EFE /* Resources */ = {
@@ -286,6 +367,11 @@
 			isa = PBXTargetDependency;
 			target = B54F9F95186DFE4900324EFE /* SimpleRadio-iOS */;
 			targetProxy = B54F9FC5186DFE4900324EFE /* PBXContainerItemProxy */;
+		};
+		B54F9FE6186DFF7B00324EFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Simperium;
+			targetProxy = B54F9FE5186DFF7B00324EFE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -476,6 +562,7 @@
 				B54F9FD3186DFE4900324EFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B54F9FD4186DFE4900324EFE /* Build configuration list for PBXNativeTarget "SimpleRadio-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +571,7 @@
 				B54F9FD6186DFE4900324EFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
