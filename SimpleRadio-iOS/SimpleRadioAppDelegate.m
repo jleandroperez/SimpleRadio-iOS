@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Jorge Leandro Perez. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SimpleRadioAppDelegate.h"
 
 #import "MasterViewController.h"
 
-@implementation AppDelegate
+@implementation SimpleRadioAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;

@@ -13,7 +13,7 @@
 		B54F9FA0186DFE4900324EFE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9F186DFE4900324EFE /* CoreData.framework */; };
 		B54F9FA6186DFE4900324EFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FA4186DFE4900324EFE /* InfoPlist.strings */; };
 		B54F9FA8186DFE4900324EFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FA7186DFE4900324EFE /* main.m */; };
-		B54F9FAC186DFE4900324EFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FAB186DFE4900324EFE /* AppDelegate.m */; };
+		B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FAB186DFE4900324EFE /* SimpleRadioAppDelegate.m */; };
 		B54F9FAF186DFE4900324EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FAD186DFE4900324EFE /* Main.storyboard */; };
 		B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */; };
 		B54F9FB5186DFE4900324EFE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB4186DFE4900324EFE /* MasterViewController.m */; };
@@ -76,8 +76,8 @@
 		B54F9FA5186DFE4900324EFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B54F9FA7186DFE4900324EFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B54F9FA9186DFE4900324EFE /* SimpleRadio-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleRadio-iOS-Prefix.pch"; sourceTree = "<group>"; };
-		B54F9FAA186DFE4900324EFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B54F9FAB186DFE4900324EFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B54F9FAA186DFE4900324EFE /* SimpleRadioAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleRadioAppDelegate.h; sourceTree = "<group>"; };
+		B54F9FAB186DFE4900324EFE /* SimpleRadioAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleRadioAppDelegate.m; sourceTree = "<group>"; };
 		B54F9FAE186DFE4900324EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B54F9FB1186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleRadio_iOS.xcdatamodel; sourceTree = "<group>"; };
 		B54F9FB3186DFE4900324EFE /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
@@ -155,16 +155,12 @@
 		B54F9FA1186DFE4900324EFE /* SimpleRadio-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B54F9FAA186DFE4900324EFE /* AppDelegate.h */,
-				B54F9FAB186DFE4900324EFE /* AppDelegate.m */,
-				B54F9FAD186DFE4900324EFE /* Main.storyboard */,
-				B54F9FB3186DFE4900324EFE /* MasterViewController.h */,
-				B54F9FB4186DFE4900324EFE /* MasterViewController.m */,
-				B54F9FB6186DFE4900324EFE /* DetailViewController.h */,
-				B54F9FB7186DFE4900324EFE /* DetailViewController.m */,
-				B54F9FB9186DFE4900324EFE /* Images.xcassets */,
-				B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */,
+				B54F9FEA186E001100324EFE /* Model */,
+				B54F9FE8186DFFEE00324EFE /* ViewControllers */,
 				B54F9FA2186DFE4900324EFE /* Supporting Files */,
+				B54F9FB9186DFE4900324EFE /* Images.xcassets */,
+				B54F9FAA186DFE4900324EFE /* SimpleRadioAppDelegate.h */,
+				B54F9FAB186DFE4900324EFE /* SimpleRadioAppDelegate.m */,
 			);
 			path = "SimpleRadio-iOS";
 			sourceTree = "<group>";
@@ -214,6 +210,26 @@
 				B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */,
 			);
 			name = Simperium;
+			sourceTree = "<group>";
+		};
+		B54F9FE8186DFFEE00324EFE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FAD186DFE4900324EFE /* Main.storyboard */,
+				B54F9FB3186DFE4900324EFE /* MasterViewController.h */,
+				B54F9FB4186DFE4900324EFE /* MasterViewController.m */,
+				B54F9FB6186DFE4900324EFE /* DetailViewController.h */,
+				B54F9FB7186DFE4900324EFE /* DetailViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B54F9FEA186E001100324EFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,7 +362,7 @@
 			files = (
 				B54F9FB8186DFE4900324EFE /* DetailViewController.m in Sources */,
 				B54F9FB5186DFE4900324EFE /* MasterViewController.m in Sources */,
-				B54F9FAC186DFE4900324EFE /* AppDelegate.m in Sources */,
+				B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */,
 				B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */,
 				B54F9FA8186DFE4900324EFE /* main.m in Sources */,
 			);
