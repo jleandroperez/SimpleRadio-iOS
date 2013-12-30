@@ -12,6 +12,7 @@
 		B5073EB21871969900B84ADE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5073EB11871969900B84ADE /* QuartzCore.framework */; };
 		B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EB41871995800B84ADE /* SRCoreDataManager.m */; };
 		B5073EB81871B46C00B84ADE /* SRRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EB71871B46C00B84ADE /* SRRecorderViewController.m */; };
+		B5073EC11871B87600B84ADE /* SRRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EC01871B87600B84ADE /* SRRecording.m */; };
 		B54F9F9A186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
 		B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */; };
 		B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9D186DFE4900324EFE /* UIKit.framework */; };
@@ -79,6 +80,8 @@
 		B5073EB41871995800B84ADE /* SRCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCoreDataManager.m; sourceTree = "<group>"; };
 		B5073EB61871B46C00B84ADE /* SRRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderViewController.h; sourceTree = "<group>"; };
 		B5073EB71871B46C00B84ADE /* SRRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderViewController.m; sourceTree = "<group>"; };
+		B5073EBF1871B87600B84ADE /* SRRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecording.h; sourceTree = "<group>"; };
+		B5073EC01871B87600B84ADE /* SRRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecording.m; sourceTree = "<group>"; };
 		B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleRadio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54F9F99186DFE4900324EFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -246,6 +249,8 @@
 				B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */,
 				B5073EB31871995800B84ADE /* SRCoreDataManager.h */,
 				B5073EB41871995800B84ADE /* SRCoreDataManager.m */,
+				B5073EBF1871B87600B84ADE /* SRRecording.h */,
+				B5073EC01871B87600B84ADE /* SRRecording.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 			files = (
 				B54F9FB5186DFE4900324EFE /* SRMainViewController.m in Sources */,
 				B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */,
+				B5073EC11871B87600B84ADE /* SRRecording.m in Sources */,
 				B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */,
 				B54F9FA8186DFE4900324EFE /* main.m in Sources */,
 				B5073EB0187195F900B84ADE /* SRScannerViewController.m in Sources */,
