@@ -41,6 +41,7 @@
 	
 	SRScannerViewController *scanner = [SRScannerViewController scanner];
 	scanner.callback = ^(NSString *detected) {
+// TODO: Inject token in Simperium
 		[self dismissViewControllerAnimated:YES completion:^{
 			[self performSegueWithIdentifier:@"showRecorder" sender:nil];
 		}];

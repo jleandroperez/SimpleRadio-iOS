@@ -31,6 +31,18 @@
 		B54F9FCC186DFE4900324EFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FCA186DFE4900324EFE /* InfoPlist.strings */; };
 		B54F9FCE186DFE4900324EFE /* SimpleRadio_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */; };
 		B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9FDF186DFF5D00324EFE /* libSimperium.a */; };
+		B5F4511C1871FD3400C4EA02 /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451171871FD3400C4EA02 /* AQPlayer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5F4511D1871FD3400C4EA02 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451191871FD3400C4EA02 /* AQRecorder.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5F4511E1871FD3400C4EA02 /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */; };
+		B5F4512B1871FD5900C4EA02 /* AQLevelMeter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451241871FD5900C4EA02 /* AQLevelMeter.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5F4512C1871FD5900C4EA02 /* GLLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F451261871FD5900C4EA02 /* GLLevelMeter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5F4512D1871FD5900C4EA02 /* LevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F451281871FD5900C4EA02 /* LevelMeter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5F4512E1871FD5900C4EA02 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F4512A1871FD5900C4EA02 /* LevelView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5F451371871FE3200C4EA02 /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F451301871FE3200C4EA02 /* CADebugMacros.cpp */; };
+		B5F451381871FE3200C4EA02 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F451331871FE3200C4EA02 /* CAStreamBasicDescription.cpp */; };
+		B5F451391871FE3200C4EA02 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F451351871FE3200C4EA02 /* CAXException.cpp */; };
+		B5F4513B1871FE6100C4EA02 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F4513A1871FE6100C4EA02 /* CoreAudio.framework */; };
+		B5F4513D1871FE7300C4EA02 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F4513C1871FE7300C4EA02 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +116,29 @@
 		B54F9FCB186DFE4900324EFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleRadio_iOSTests.m; sourceTree = "<group>"; };
 		B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simperium.xcodeproj; path = "Frameworks/simperium-ios/Simperium.xcodeproj"; sourceTree = "<group>"; };
+		B5F451161871FD3400C4EA02 /* AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQPlayer.h; sourceTree = "<group>"; };
+		B5F451171871FD3400C4EA02 /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQPlayer.mm; sourceTree = "<group>"; };
+		B5F451181871FD3400C4EA02 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQRecorder.h; sourceTree = "<group>"; };
+		B5F451191871FD3400C4EA02 /* AQRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQRecorder.mm; sourceTree = "<group>"; };
+		B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeterTable.cpp; sourceTree = "<group>"; };
+		B5F4511B1871FD3400C4EA02 /* MeterTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterTable.h; sourceTree = "<group>"; };
+		B5F451231871FD5900C4EA02 /* AQLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQLevelMeter.h; sourceTree = "<group>"; };
+		B5F451241871FD5900C4EA02 /* AQLevelMeter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQLevelMeter.mm; sourceTree = "<group>"; };
+		B5F451251871FD5900C4EA02 /* GLLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLevelMeter.h; sourceTree = "<group>"; };
+		B5F451261871FD5900C4EA02 /* GLLevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLevelMeter.m; sourceTree = "<group>"; };
+		B5F451271871FD5900C4EA02 /* LevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelMeter.h; sourceTree = "<group>"; };
+		B5F451281871FD5900C4EA02 /* LevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMeter.m; sourceTree = "<group>"; };
+		B5F451291871FD5900C4EA02 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
+		B5F4512A1871FD5900C4EA02 /* LevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelView.m; sourceTree = "<group>"; };
+		B5F451301871FE3200C4EA02 /* CADebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CADebugMacros.cpp; sourceTree = "<group>"; };
+		B5F451311871FE3200C4EA02 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		B5F451321871FE3200C4EA02 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
+		B5F451331871FE3200C4EA02 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
+		B5F451341871FE3200C4EA02 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		B5F451351871FE3200C4EA02 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
+		B5F451361871FE3200C4EA02 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		B5F4513A1871FE6100C4EA02 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		B5F4513C1871FE7300C4EA02 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +146,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F4513D1871FE7300C4EA02 /* AudioToolbox.framework in Frameworks */,
+				B5F4513B1871FE6100C4EA02 /* CoreAudio.framework in Frameworks */,
 				B5073EB21871969900B84ADE /* QuartzCore.framework in Frameworks */,
 				B5073EAA187194E300B84ADE /* AVFoundation.framework in Frameworks */,
 				B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */,
@@ -158,6 +195,8 @@
 		B54F9F98186DFE4900324EFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5F4513C1871FE7300C4EA02 /* AudioToolbox.framework */,
+				B5F4513A1871FE6100C4EA02 /* CoreAudio.framework */,
 				B5073EB11871969900B84ADE /* QuartzCore.framework */,
 				B5073EA9187194E300B84ADE /* AVFoundation.framework */,
 				B54F9F99186DFE4900324EFE /* Foundation.framework */,
@@ -172,6 +211,9 @@
 		B54F9FA1186DFE4900324EFE /* SimpleRadio-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B5F451151871FD3400C4EA02 /* AudioQueue */,
+				B5F451221871FD5900C4EA02 /* AudioViews */,
+				B5F4512F1871FE3200C4EA02 /* PublicUtility */,
 				B54F9FEA186E001100324EFE /* Model */,
 				B54F9FE8186DFFEE00324EFE /* ViewControllers */,
 				B54F9FA2186DFE4900324EFE /* Supporting Files */,
@@ -255,6 +297,48 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		B5F451151871FD3400C4EA02 /* AudioQueue */ = {
+			isa = PBXGroup;
+			children = (
+				B5F451161871FD3400C4EA02 /* AQPlayer.h */,
+				B5F451171871FD3400C4EA02 /* AQPlayer.mm */,
+				B5F451181871FD3400C4EA02 /* AQRecorder.h */,
+				B5F451191871FD3400C4EA02 /* AQRecorder.mm */,
+				B5F4511B1871FD3400C4EA02 /* MeterTable.h */,
+				B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */,
+			);
+			path = AudioQueue;
+			sourceTree = "<group>";
+		};
+		B5F451221871FD5900C4EA02 /* AudioViews */ = {
+			isa = PBXGroup;
+			children = (
+				B5F451231871FD5900C4EA02 /* AQLevelMeter.h */,
+				B5F451241871FD5900C4EA02 /* AQLevelMeter.mm */,
+				B5F451251871FD5900C4EA02 /* GLLevelMeter.h */,
+				B5F451261871FD5900C4EA02 /* GLLevelMeter.m */,
+				B5F451271871FD5900C4EA02 /* LevelMeter.h */,
+				B5F451281871FD5900C4EA02 /* LevelMeter.m */,
+				B5F451291871FD5900C4EA02 /* LevelView.h */,
+				B5F4512A1871FD5900C4EA02 /* LevelView.m */,
+			);
+			path = AudioViews;
+			sourceTree = "<group>";
+		};
+		B5F4512F1871FE3200C4EA02 /* PublicUtility */ = {
+			isa = PBXGroup;
+			children = (
+				B5F451301871FE3200C4EA02 /* CADebugMacros.cpp */,
+				B5F451311871FE3200C4EA02 /* CADebugMacros.h */,
+				B5F451321871FE3200C4EA02 /* CAMath.h */,
+				B5F451331871FE3200C4EA02 /* CAStreamBasicDescription.cpp */,
+				B5F451341871FE3200C4EA02 /* CAStreamBasicDescription.h */,
+				B5F451351871FE3200C4EA02 /* CAXException.cpp */,
+				B5F451361871FE3200C4EA02 /* CAXException.h */,
+			);
+			path = PublicUtility;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -303,6 +387,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jorge Leandro Perez";
 				TargetAttributes = {
+					B54F9F95186DFE4900324EFE = {
+						DevelopmentTeam = QXKWK6Q52N;
+					};
 					B54F9FBE186DFE4900324EFE = {
 						TestTargetID = B54F9F95186DFE4900324EFE;
 					};
@@ -383,14 +470,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F451391871FE3200C4EA02 /* CAXException.cpp in Sources */,
+				B5F4512E1871FD5900C4EA02 /* LevelView.m in Sources */,
+				B5F451381871FE3200C4EA02 /* CAStreamBasicDescription.cpp in Sources */,
 				B54F9FB5186DFE4900324EFE /* SRMainViewController.m in Sources */,
+				B5F451371871FE3200C4EA02 /* CADebugMacros.cpp in Sources */,
+				B5F4511C1871FD3400C4EA02 /* AQPlayer.mm in Sources */,
+				B5F4512B1871FD5900C4EA02 /* AQLevelMeter.mm in Sources */,
 				B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */,
 				B5073EC11871B87600B84ADE /* SRRecording.m in Sources */,
+				B5F4511E1871FD3400C4EA02 /* MeterTable.cpp in Sources */,
 				B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */,
 				B54F9FA8186DFE4900324EFE /* main.m in Sources */,
 				B5073EB0187195F900B84ADE /* SRScannerViewController.m in Sources */,
+				B5F4511D1871FD3400C4EA02 /* AQRecorder.mm in Sources */,
 				B5073EB81871B46C00B84ADE /* SRRecorderViewController.m in Sources */,
 				B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */,
+				B5F4512D1871FD5900C4EA02 /* LevelMeter.m in Sources */,
+				B5F4512C1871FD5900C4EA02 /* GLLevelMeter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,10 +619,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "SimpleRadio-iOS/SimpleRadio-iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -535,10 +637,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SimpleRadio-iOS/SimpleRadio-iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
