@@ -47,10 +47,32 @@
                     </view>
                     <navigationItem key="navigationItem" id="D86-gf-ZwK"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <segue destination="Jhq-No-7QI" kind="push" identifier="showRecorder" id="ejf-M8-zB7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C7o-dh-I15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="387" y="68"/>
+        </scene>
+        <!--Recorder View Controller-->
+        <scene sceneID="xc9-AL-Vi7">
+            <objects>
+                <viewController id="Jhq-No-7QI" customClass="SRRecorderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zdv-rn-weq"/>
+                        <viewControllerLayoutGuide type="bottom" id="VF4-fm-UdC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dp4-wZ-k8Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qbv-Aw-ao3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3R-iM-OeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="68"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

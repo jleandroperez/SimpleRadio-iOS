@@ -27,7 +27,8 @@
 
 @implementation SRScannerViewController
 
-- (id)init {
+- (id)init
+{
 	if ((self = [super init])) {
 		self.cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		[self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
@@ -57,7 +58,8 @@
 	return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
 			
 	// Align the button
@@ -75,12 +77,14 @@
 	[self.view addSubview:self.cancelButton];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
 	[super viewWillAppear:animated];
     [self.session startRunning];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
 	[super viewWillDisappear:animated];
     [self.session stopRunning];
 }
@@ -89,11 +93,13 @@
 #pragma mark -
 #pragma mark UIViewController Overrides
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (NSUInteger)supportedInterfaceOrientations
+{
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldAutorotate {
+- (BOOL)shouldAutorotate
+{
     return NO;
 }
 
@@ -101,7 +107,8 @@
 #pragma mark -
 #pragma mark UIButton delegate methods
 
-- (void)btnDismissPressed:(id)sender {
+- (void)btnDismissPressed:(id)sender
+{
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -109,7 +116,8 @@
 #pragma mark -
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
+{
 	if (!self.callback) {
 		return;
 	}
@@ -126,12 +134,14 @@
 #pragma mark -
 #pragma mark Static Helpers
 
-+ (BOOL)isCameraAvailable {
++ (BOOL)isCameraAvailable
+{
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     return videoDevices.count > 0;
 }
 
-+ (instancetype)scanner {
++ (instancetype)scanner
+{
 	return [[[self class] alloc] init];
 }
 
