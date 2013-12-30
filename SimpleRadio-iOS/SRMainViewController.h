@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  MasterViewController.h
 //  SimpleRadio-iOS
 //
 //  Created by Jorge Leandro Perez on 12/27/13.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SimpleRadioAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
 
+@interface SRMainViewController : UIViewController
+- (IBAction)scanBarCode:(id)sender;
 @end

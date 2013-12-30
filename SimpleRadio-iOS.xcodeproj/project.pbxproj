@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5073EAA187194E300B84ADE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5073EA9187194E300B84ADE /* AVFoundation.framework */; };
+		B5073EB0187195F900B84ADE /* SRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EAF187195F900B84ADE /* SRScannerViewController.m */; };
+		B5073EB21871969900B84ADE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5073EB11871969900B84ADE /* QuartzCore.framework */; };
+		B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EB41871995800B84ADE /* SRCoreDataManager.m */; };
 		B54F9F9A186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
 		B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */; };
 		B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9D186DFE4900324EFE /* UIKit.framework */; };
@@ -16,8 +20,7 @@
 		B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FAB186DFE4900324EFE /* SimpleRadioAppDelegate.m */; };
 		B54F9FAF186DFE4900324EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FAD186DFE4900324EFE /* Main.storyboard */; };
 		B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */; };
-		B54F9FB5186DFE4900324EFE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB4186DFE4900324EFE /* MasterViewController.m */; };
-		B54F9FB8186DFE4900324EFE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB7186DFE4900324EFE /* DetailViewController.m */; };
+		B54F9FB5186DFE4900324EFE /* SRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FB4186DFE4900324EFE /* SRMainViewController.m */; };
 		B54F9FBA186DFE4900324EFE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FB9186DFE4900324EFE /* Images.xcassets */; };
 		B54F9FC1186DFE4900324EFE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9FC0186DFE4900324EFE /* XCTest.framework */; };
 		B54F9FC2186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
@@ -67,6 +70,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B5073EA9187194E300B84ADE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B5073EAE187195F900B84ADE /* SRScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRScannerViewController.h; sourceTree = "<group>"; };
+		B5073EAF187195F900B84ADE /* SRScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRScannerViewController.m; sourceTree = "<group>"; };
+		B5073EB11871969900B84ADE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B5073EB31871995800B84ADE /* SRCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCoreDataManager.h; sourceTree = "<group>"; };
+		B5073EB41871995800B84ADE /* SRCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCoreDataManager.m; sourceTree = "<group>"; };
 		B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleRadio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54F9F99186DFE4900324EFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,10 +89,8 @@
 		B54F9FAB186DFE4900324EFE /* SimpleRadioAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleRadioAppDelegate.m; sourceTree = "<group>"; };
 		B54F9FAE186DFE4900324EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B54F9FB1186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleRadio_iOS.xcdatamodel; sourceTree = "<group>"; };
-		B54F9FB3186DFE4900324EFE /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		B54F9FB4186DFE4900324EFE /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		B54F9FB6186DFE4900324EFE /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		B54F9FB7186DFE4900324EFE /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B54F9FB3186DFE4900324EFE /* SRMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRMainViewController.h; sourceTree = "<group>"; };
+		B54F9FB4186DFE4900324EFE /* SRMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRMainViewController.m; sourceTree = "<group>"; };
 		B54F9FB9186DFE4900324EFE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B54F9FBF186DFE4900324EFE /* SimpleRadio-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SimpleRadio-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54F9FC0186DFE4900324EFE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -98,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5073EB21871969900B84ADE /* QuartzCore.framework in Frameworks */,
+				B5073EAA187194E300B84ADE /* AVFoundation.framework in Frameworks */,
 				B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */,
 				B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */,
 				B54F9FA0186DFE4900324EFE /* CoreData.framework in Frameworks */,
@@ -143,6 +152,8 @@
 		B54F9F98186DFE4900324EFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5073EB11871969900B84ADE /* QuartzCore.framework */,
+				B5073EA9187194E300B84ADE /* AVFoundation.framework */,
 				B54F9F99186DFE4900324EFE /* Foundation.framework */,
 				B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */,
 				B54F9F9D186DFE4900324EFE /* UIKit.framework */,
@@ -216,10 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				B54F9FAD186DFE4900324EFE /* Main.storyboard */,
-				B54F9FB3186DFE4900324EFE /* MasterViewController.h */,
-				B54F9FB4186DFE4900324EFE /* MasterViewController.m */,
-				B54F9FB6186DFE4900324EFE /* DetailViewController.h */,
-				B54F9FB7186DFE4900324EFE /* DetailViewController.m */,
+				B54F9FB3186DFE4900324EFE /* SRMainViewController.h */,
+				B54F9FB4186DFE4900324EFE /* SRMainViewController.m */,
+				B5073EAE187195F900B84ADE /* SRScannerViewController.h */,
+				B5073EAF187195F900B84ADE /* SRScannerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				B54F9FB0186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld */,
+				B5073EB31871995800B84ADE /* SRCoreDataManager.h */,
+				B5073EB41871995800B84ADE /* SRCoreDataManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -360,11 +373,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B54F9FB8186DFE4900324EFE /* DetailViewController.m in Sources */,
-				B54F9FB5186DFE4900324EFE /* MasterViewController.m in Sources */,
+				B54F9FB5186DFE4900324EFE /* SRMainViewController.m in Sources */,
 				B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */,
 				B54F9FB2186DFE4900324EFE /* SimpleRadio_iOS.xcdatamodeld in Sources */,
 				B54F9FA8186DFE4900324EFE /* main.m in Sources */,
+				B5073EB0187195F900B84ADE /* SRScannerViewController.m in Sources */,
+				B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
