@@ -31,6 +31,7 @@
 		B54F9FCC186DFE4900324EFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54F9FCA186DFE4900324EFE /* InfoPlist.strings */; };
 		B54F9FCE186DFE4900324EFE /* SimpleRadio_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */; };
 		B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9FDF186DFF5D00324EFE /* libSimperium.a */; };
+		B59E81201875F8EB005ADDCF /* AudioController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B59E811F1875F8EB005ADDCF /* AudioController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5F4511C1871FD3400C4EA02 /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451171871FD3400C4EA02 /* AQPlayer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5F4511D1871FD3400C4EA02 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451191871FD3400C4EA02 /* AQRecorder.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5F4511E1871FD3400C4EA02 /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */; };
@@ -116,6 +117,8 @@
 		B54F9FCB186DFE4900324EFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleRadio_iOSTests.m; sourceTree = "<group>"; };
 		B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simperium.xcodeproj; path = "Frameworks/simperium-ios/Simperium.xcodeproj"; sourceTree = "<group>"; };
+		B59E811E1875F8EB005ADDCF /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
+		B59E811F1875F8EB005ADDCF /* AudioController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioController.mm; sourceTree = "<group>"; };
 		B5F451161871FD3400C4EA02 /* AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQPlayer.h; sourceTree = "<group>"; };
 		B5F451171871FD3400C4EA02 /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQPlayer.mm; sourceTree = "<group>"; };
 		B5F451181871FD3400C4EA02 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQRecorder.h; sourceTree = "<group>"; };
@@ -297,15 +300,25 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		B59E81211875FA84005ADDCF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B5F4511B1871FD3400C4EA02 /* MeterTable.h */,
+				B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		B5F451151871FD3400C4EA02 /* AudioQueue */ = {
 			isa = PBXGroup;
 			children = (
+				B59E81211875FA84005ADDCF /* Helpers */,
 				B5F451161871FD3400C4EA02 /* AQPlayer.h */,
 				B5F451171871FD3400C4EA02 /* AQPlayer.mm */,
 				B5F451181871FD3400C4EA02 /* AQRecorder.h */,
 				B5F451191871FD3400C4EA02 /* AQRecorder.mm */,
-				B5F4511B1871FD3400C4EA02 /* MeterTable.h */,
-				B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */,
+				B59E811E1875F8EB005ADDCF /* AudioController.h */,
+				B59E811F1875F8EB005ADDCF /* AudioController.mm */,
 			);
 			path = AudioQueue;
 			sourceTree = "<group>";
@@ -328,13 +341,13 @@
 		B5F4512F1871FE3200C4EA02 /* PublicUtility */ = {
 			isa = PBXGroup;
 			children = (
-				B5F451301871FE3200C4EA02 /* CADebugMacros.cpp */,
 				B5F451311871FE3200C4EA02 /* CADebugMacros.h */,
+				B5F451301871FE3200C4EA02 /* CADebugMacros.cpp */,
 				B5F451321871FE3200C4EA02 /* CAMath.h */,
-				B5F451331871FE3200C4EA02 /* CAStreamBasicDescription.cpp */,
 				B5F451341871FE3200C4EA02 /* CAStreamBasicDescription.h */,
-				B5F451351871FE3200C4EA02 /* CAXException.cpp */,
+				B5F451331871FE3200C4EA02 /* CAStreamBasicDescription.cpp */,
 				B5F451361871FE3200C4EA02 /* CAXException.h */,
+				B5F451351871FE3200C4EA02 /* CAXException.cpp */,
 			);
 			path = PublicUtility;
 			sourceTree = "<group>";
@@ -485,6 +498,7 @@
 				B5073EB0187195F900B84ADE /* SRScannerViewController.m in Sources */,
 				B5F4511D1871FD3400C4EA02 /* AQRecorder.mm in Sources */,
 				B5073EB81871B46C00B84ADE /* SRRecorderViewController.m in Sources */,
+				B59E81201875F8EB005ADDCF /* AudioController.mm in Sources */,
 				B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */,
 				B5F4512D1871FD5900C4EA02 /* LevelMeter.m in Sources */,
 				B5F4512C1871FD5900C4EA02 /* GLLevelMeter.m in Sources */,

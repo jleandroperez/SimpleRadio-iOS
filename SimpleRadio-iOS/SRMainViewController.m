@@ -35,19 +35,19 @@
 
 - (IBAction)scanBarCode:(id)sender
 {
-	if (![SRScannerViewController isCameraAvailable]) {
-		return;
-	}
-	
-	SRScannerViewController *scanner = [SRScannerViewController scanner];
-	scanner.callback = ^(NSString *detected) {
+//	if (![SRScannerViewController isCameraAvailable]) {
+//		return;
+//	}
+//	
+//	SRScannerViewController *scanner = [SRScannerViewController scanner];
+//	scanner.callback = ^(NSString *detected) {
 // TODO: Inject token in Simperium
-		[self dismissViewControllerAnimated:YES completion:^{
+//		[self dismissViewControllerAnimated:YES completion:^{
 			[self performSegueWithIdentifier:@"showRecorder" sender:nil];
-		}];
-	};
-	
-	[self presentViewController:scanner animated:YES completion:nil];
+//		}];
+//	};
+//	
+//	[self presentViewController:scanner animated:YES completion:nil];
 }
 
 @end

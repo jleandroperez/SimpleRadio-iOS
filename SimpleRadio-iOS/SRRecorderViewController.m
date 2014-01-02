@@ -7,6 +7,8 @@
 //
 
 #import "SRRecorderViewController.h"
+#import "AQLevelMeter.h"
+#import "AudioController.h"
 
 
 
@@ -15,8 +17,9 @@
 //- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 //@end
 
-@interface SRRecorderViewController ()
-
+@interface SRRecorderViewController () <AudioControllerDelegate>
+@property (nonatomic, weak)		IBOutlet AQLevelMeter	*meter;
+@property (nonatomic, strong)	AudioController			*controller;
 @end
 
 
@@ -26,7 +29,39 @@
 {
     [super viewDidLoad];
 	self.title = NSLocalizedString(@"Recorder", nil);
+	
+	UIColor *bgColor = [[UIColor alloc] initWithRed:.39 green:.44 blue:.57 alpha:.5];
+	self.meter.backgroundColor = bgColor;
+	self.meter.borderColor = bgColor;
+	
+	self.controller = [[AudioController alloc] init];
+	self.controller.delegate = self;
 }
+
+
+#pragma mark -
+#pragma mark AudioController Delegate
+
+- (void)audioControllerDidBeginRecording:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue
+{
+	self.meter.aq = audioQueue;
+}
+
+- (void)audioControllerDidStopRecording:(AudioController *)audioController
+{
+	self.meter.aq = nil;
+}
+
+- (void)audioControllerDidBeginPlayback:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue
+{
+	self.meter.aq = audioQueue;
+}
+
+- (void)audioControllerDidStopPlayback:(AudioController *)audioController
+{
+	self.meter.aq = nil;	
+}
+
 
 //- (void)viewDidLoad
 //{

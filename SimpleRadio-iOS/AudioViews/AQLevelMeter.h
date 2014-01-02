@@ -54,7 +54,7 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 
 #define kPeakFalloffPerSec	.7
 #define kLevelFalloffPerSec .8
-#define kMinDBvalue -80.0
+#define kMinDBvalue			-80.0
 
 
 // A LevelMeter subclass which is used specifically for AudioQueue objects
