@@ -185,7 +185,8 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 		mFileName = CFStringCreateCopy(kCFAllocatorDefault, inRecordFile);
 
 		// specify the recording format
-		SetupAudioFormat(kAudioFormatLinearPCM);
+		// kAudioFormatLinearPCM
+		SetupAudioFormat(kAudioFormatMPEG4AAC);
 		
 		// create the queue
 		XThrowIfError(AudioQueueNewInput(
@@ -208,7 +209,7 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 		url = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)recordFile, NULL);
 		
 		// create the audio file
-		OSStatus status = AudioFileCreateWithURL(url, kAudioFileCAFType, &mRecordFormat, kAudioFileFlags_EraseFile, &mRecordFile);
+		OSStatus status = AudioFileCreateWithURL(url, kAudioFileAAC_ADTSType, &mRecordFormat, kAudioFileFlags_EraseFile, &mRecordFile);
 		CFRelease(url);
         
         XThrowIfError(status, "AudioFileCreateWithURL failed");

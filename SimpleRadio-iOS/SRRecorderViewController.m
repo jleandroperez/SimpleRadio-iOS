@@ -19,6 +19,7 @@
 
 @interface SRRecorderViewController () <AudioControllerDelegate>
 @property (nonatomic, weak)		IBOutlet AQLevelMeter	*meter;
+@property (nonatomic, weak)		IBOutlet UIButton		*recordButton;
 @property (nonatomic, strong)	AudioController			*controller;
 @end
 
@@ -33,7 +34,7 @@
 	UIColor *bgColor = [[UIColor alloc] initWithRed:.39 green:.44 blue:.57 alpha:.5];
 	self.meter.backgroundColor = bgColor;
 	self.meter.borderColor = bgColor;
-	
+
 	self.controller = [[AudioController alloc] init];
 	self.controller.delegate = self;
 }
@@ -44,11 +45,14 @@
 
 - (void)audioControllerDidBeginRecording:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue
 {
+	[self.recordButton setTitle:@"Done" forState:UIControlStateNormal];
 	self.meter.aq = audioQueue;
 }
 
 - (void)audioControllerDidStopRecording:(AudioController *)audioController audioData:(NSData *)audioData
 {
+	NSLog(@"Done Recording %ld", audioData.length);
+	[self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
 	self.meter.aq = nil;
 }
 
@@ -76,16 +80,7 @@
 	[self.controller record];
 }
 
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//	// Do any additional setup after loading the view, typically from a nib.
-//	self.navigationItem.leftBarButtonItem = self.editButtonItem;
-//
-//	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//	self.navigationItem.rightBarButtonItem = addButton;
-//}
-//
+
 //- (void)insertNewObject:(id)sender
 //{
 //    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];

@@ -60,12 +60,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8oI-Wq-gPv" customClass="AQLevelMeter">
-                                <rect key="frame" x="40" y="99" width="241" height="46"/>
+                                <rect key="frame" x="41" y="113" width="241" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ouf-9E-4dp">
-                                <rect key="frame" x="205" y="202" width="30" height="30"/>
+                                <rect key="frame" x="205" y="270" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i8B-hz-52H">
-                                <rect key="frame" x="74" y="202" width="50" height="30"/>
+                                <rect key="frame" x="74" y="270" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,12 +84,17 @@
                                     <action selector="btnRecordPressed:" destination="Jhq-No-7QI" eventType="touchUpInside" id="guM-AQ-GmA"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeterBG" id="ncb-RS-vkX">
+                                <rect key="frame" x="4" y="74" width="313" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qbv-Aw-ao3"/>
                     <connections>
                         <outlet property="meter" destination="8oI-Wq-gPv" id="j5d-uq-ega"/>
+                        <outlet property="recordButton" destination="i8B-hz-52H" id="dcC-2N-a8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3R-iM-OeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -97,6 +102,9 @@
             <point key="canvasLocation" x="838" y="68"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MeterBG" width="313" height="158"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

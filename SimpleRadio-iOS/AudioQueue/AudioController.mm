@@ -61,7 +61,7 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 @property (nonatomic, assign)	BOOL		playbackWasInterrupted;
 @property (nonatomic, assign)	BOOL		inBackground;
 @property (nonatomic, assign)	BOOL		inputAvailable;
-- (void)registerForBackgroundNotifications;
+- (void)registerForNotifications;
 @end
 
 
@@ -103,7 +103,10 @@ char *OSTypeToStr(char *buf, OSType t)
 	}
 	else
 	{
-		CFStringRef recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.caf"];
+		// dispose the previous playback queue
+		_player->DisposeQueue(true);
+		
+		CFStringRef recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.aac"];
 		_player->CreateQueueForFile(recordFilePath);
 		
 		OSStatus result = _player->StartQueue(false);
@@ -135,7 +138,7 @@ char *OSTypeToStr(char *buf, OSType t)
 	}
 	else // If we're not recording, start.
 	{
-		_recorder->StartRecord(CFSTR("recordedFile.caf"));
+		_recorder->StartRecord(CFSTR("recordedFile.aac"));
 		[self.delegate audioControllerDidBeginRecording:self audioQueue:_recorder->Queue()];
 	}	
 }
@@ -143,12 +146,9 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)stopRecord
 {
 	_recorder->StopRecord();
-	
-	// dispose the previous playback queue
-	_player->DisposeQueue(true);
-	
+		
 	// Return the audio recording
-	NSString *recordFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.caf"];
+	NSString *recordFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.aac"];
 	NSData *audioData = [NSData dataWithContentsOfFile:recordFilePath];
 	[self.delegate audioControllerDidStopRecording:self audioData:audioData];
 }
@@ -184,23 +184,27 @@ char *OSTypeToStr(char *buf, OSType t)
 		success = [session setActive:YES error:&error];
 		if (!success) NSLog(@"AVAudioSession error activating: %@",error);
 		else NSLog(@"audioSession active");
-		
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		[nc addObserver:self selector:@selector(handleInterruptNote:)  name:AVAudioSessionInterruptionNotification object:nil];
-		[nc addObserver:self selector:@selector(handleRouteNote:)	   name:AVAudioSessionRouteChangeNotification object:nil];
-		
+				
 		// disable the play button since we have no recording to play yet
 		_playbackWasInterrupted = NO;
 		_playbackWasPaused = NO;
 		
-		[self registerForBackgroundNotifications];
+		[self registerForNotifications];
 	}
 	
 	return self;
 }
 
 
-#pragma mark AVAudioSession Handlers
+#pragma mark Notification
+- (void)registerForNotifications
+{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self selector:@selector(handleInterruptNote:)  name:AVAudioSessionInterruptionNotification object:nil];
+	[nc addObserver:self selector:@selector(handleRouteNote:)	   name:AVAudioSessionRouteChangeNotification object:nil];
+	[nc addObserver:self selector:@selector(resignActive) name:UIApplicationWillResignActiveNotification object:nil];
+	[nc addObserver:self selector:@selector(enterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
 
 - (void)handleRouteNote:(NSNotification *)note
 {
@@ -243,15 +247,6 @@ char *OSTypeToStr(char *buf, OSType t)
 		[self.delegate audioControllerDidBeginPlayback:self audioQueue:_player->Queue()];
 		self.playbackWasInterrupted = NO;
 	}
-}
-
-
-#pragma mark background notifications
-- (void)registerForBackgroundNotifications
-{
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self selector:@selector(resignActive) name:UIApplicationWillResignActiveNotification object:nil];
-	[nc addObserver:self selector:@selector(enterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)resignActive
