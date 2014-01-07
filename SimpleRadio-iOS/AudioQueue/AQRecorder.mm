@@ -48,6 +48,7 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 */
 
 #include "AQRecorder.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define kBufferDurationSeconds .5
 
@@ -160,15 +161,8 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
 {
 	memset(&mRecordFormat, 0, sizeof(mRecordFormat));
 
-	UInt32 size = sizeof(mRecordFormat.mSampleRate);
-	XThrowIfError(AudioSessionGetProperty(	kAudioSessionProperty_CurrentHardwareSampleRate,
-										&size, 
-										&mRecordFormat.mSampleRate), "couldn't get hardware sample rate");
-
-	size = sizeof(mRecordFormat.mChannelsPerFrame);
-	XThrowIfError(AudioSessionGetProperty(	kAudioSessionProperty_CurrentHardwareInputNumberChannels, 
-										&size, 
-										&mRecordFormat.mChannelsPerFrame), "couldn't get input channel count");
+	mRecordFormat.mSampleRate = [[AVAudioSession sharedInstance] sampleRate];
+	mRecordFormat.mChannelsPerFrame = [[AVAudioSession sharedInstance] inputNumberOfChannels];
 			
 	mRecordFormat.mFormatID = inFormatID;
 	if (inFormatID == kAudioFormatLinearPCM)

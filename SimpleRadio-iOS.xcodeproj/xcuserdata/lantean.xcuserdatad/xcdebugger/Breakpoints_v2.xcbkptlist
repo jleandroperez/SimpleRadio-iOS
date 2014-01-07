@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimpleRadio-iOS/SRRecorderViewController.m"
-            timestampString = "410105347.203023"
+            timestampString = "410389801.943966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,27 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimpleRadio-iOS/AudioQueue/AudioController.mm"
-            timestampString = "410389025.967212"
+            timestampString = "410806023.442613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-stopRecord"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimpleRadio-iOS/AudioQueue/AudioController.mm"
-            timestampString = "410385728.268762"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-record"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,13 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SimpleRadio-iOS/AudioQueue/AudioController.mm"
-            timestampString = "410389021.865815"
+            filePath = "SimpleRadio-iOS/SRRecorderViewController.m"
+            timestampString = "410389912.447183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-stopRecord"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-audioControllerDidBeginRecording:audioQueue:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

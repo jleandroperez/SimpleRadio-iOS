@@ -55,23 +55,19 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 @class AudioController;
 
 @protocol AudioControllerDelegate <NSObject>
-
 - (void)audioControllerDidBeginRecording:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue;
-- (void)audioControllerDidStopRecording:(AudioController *)audioController;
+- (void)audioControllerDidStopRecording:(AudioController *)audioController audioData:(NSData *)audioData;
 
 - (void)audioControllerDidBeginPlayback:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue;
 - (void)audioControllerDidStopPlayback:(AudioController *)audioController;
-
 @end
 
 
-@interface AudioController : NSObject {
-	CFStringRef recordFilePath;	
-}
+@interface AudioController : NSObject
 
 @property (nonatomic, assign) id<AudioControllerDelegate> delegate;
 
-- (void)record;
 - (void)play;
+- (void)record;
 
 @end

@@ -47,7 +47,7 @@
 	self.meter.aq = audioQueue;
 }
 
-- (void)audioControllerDidStopRecording:(AudioController *)audioController
+- (void)audioControllerDidStopRecording:(AudioController *)audioController audioData:(NSData *)audioData
 {
 	self.meter.aq = nil;
 }
@@ -62,6 +62,19 @@
 	self.meter.aq = nil;	
 }
 
+
+#pragma mark -
+#pragma mark Button Delegates
+
+- (IBAction)btnPlayPressed:(id)sender
+{
+	[self.controller play];
+}
+
+- (IBAction)btnRecordPressed:(id)sender
+{
+	[self.controller record];
+}
 
 //- (void)viewDidLoad
 //{

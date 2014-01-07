@@ -50,20 +50,18 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 #import "AudioController.h"
 #import "AQPlayer.h"
 #import "AQRecorder.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 
 @interface AudioController ()
-
 @property (nonatomic, assign)	AQPlayer	*player;
 @property (nonatomic, assign)	AQRecorder	*recorder;
 @property (nonatomic, assign)	BOOL		playbackWasPaused;
 @property (nonatomic, assign)	BOOL		playbackWasInterrupted;
 @property (nonatomic, assign)	BOOL		inBackground;
 @property (nonatomic, assign)	BOOL		inputAvailable;
-
 - (void)registerForBackgroundNotifications;
-
 @end
 
 
@@ -88,34 +86,6 @@ char *OSTypeToStr(char *buf, OSType t)
 }
 
 #pragma mark Playback routines
-
--(void)stopPlayQueue
-{
-	_player->StopQueue();
-	[self.delegate audioControllerDidStopPlayback:self];
-}
-
--(void)pausePlayQueue
-{
-	_player->PauseQueue();
-	_playbackWasPaused = YES;
-}
-
-- (void)stopRecord
-{
-	_recorder->StopRecord();
-	
-	// dispose the previous playback queue
-	_player->DisposeQueue(true);
-
-	// now create a new queue for the recorded file
-	recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.caf"];
-	_player->CreateQueueForFile(recordFilePath);
-		
-	// Set the button's state back to "record"
-	[self.delegate audioControllerDidStopRecording:self];
-}
-
 - (void)play
 {
 	if (_player->IsRunning())
@@ -124,7 +94,7 @@ char *OSTypeToStr(char *buf, OSType t)
 			OSStatus result = _player->StartQueue(true);
             _playbackWasPaused = NO;
 			if (result == noErr) {
-				[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
+				[self.delegate audioControllerDidBeginPlayback:self audioQueue:_player->Queue()];
 			}
 		}
 		else {
@@ -132,14 +102,31 @@ char *OSTypeToStr(char *buf, OSType t)
 		}
 	}
 	else
-	{		
+	{
+		CFStringRef recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.caf"];
+		_player->CreateQueueForFile(recordFilePath);
+		
 		OSStatus result = _player->StartQueue(false);
 		if (result == noErr) {
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
+			[self.delegate audioControllerDidBeginPlayback:self audioQueue:_player->Queue()];
 		}
 	}
 }
 
+-(void)pausePlayQueue
+{
+	_player->PauseQueue();
+	_playbackWasPaused = YES;
+}
+
+-(void)stopPlayQueue
+{
+	_player->StopQueue();
+	[self.delegate audioControllerDidStopPlayback:self];
+}
+
+
+#pragma mark Record routines
 - (void)record
 {
 	if (_recorder->IsRunning()) // If we are currently recording, stop and save the file.
@@ -148,113 +135,59 @@ char *OSTypeToStr(char *buf, OSType t)
 	}
 	else // If we're not recording, start.
 	{
-		[self.delegate audioControllerDidBeginRecording:self audioQueue:_recorder->Queue()];
-
-		// Start the recorder
 		_recorder->StartRecord(CFSTR("recordedFile.caf"));
+		[self.delegate audioControllerDidBeginRecording:self audioQueue:_recorder->Queue()];
 	}	
 }
 
-#pragma mark AudioSession listeners
-void interruptionListener(	void *	inClientData,
-							UInt32	inInterruptionState)
+- (void)stopRecord
 {
-	AudioController *THIS = (AudioController*)inClientData;
-	if (inInterruptionState == kAudioSessionBeginInterruption)
-	{
-		if (THIS->_recorder->IsRunning()) {
-			[THIS stopRecord];
-		}
-		else if (THIS->_player->IsRunning()) {
-			//the queue will stop itself on an interruption, we just need to update the UI
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueStopped" object:THIS];
-			THIS->_playbackWasInterrupted = YES;
-		}
-	}
-	else if ((inInterruptionState == kAudioSessionEndInterruption) && THIS->_playbackWasInterrupted)
-	{
-		// we were playing back when we were interrupted, so reset and resume now
-		THIS->_player->StartQueue(true);
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:THIS];
-		THIS->_playbackWasInterrupted = NO;
-	}
+	_recorder->StopRecord();
+	
+	// dispose the previous playback queue
+	_player->DisposeQueue(true);
+	
+	// Return the audio recording
+	NSString *recordFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.caf"];
+	NSData *audioData = [NSData dataWithContentsOfFile:recordFilePath];
+	[self.delegate audioControllerDidStopRecording:self audioData:audioData];
 }
 
-void propListener(	void *                  inClientData,
-					AudioSessionPropertyID	inID,
-					UInt32                  inDataSize,
-					const void *            inData)
-{
-	AudioController *THIS = (AudioController*)inClientData;
-	if (inID == kAudioSessionProperty_AudioRouteChange)
-	{
-		CFDictionaryRef routeDictionary = (CFDictionaryRef)inData;			
-		//CFShow(routeDictionary);
-		CFNumberRef reason = (CFNumberRef)CFDictionaryGetValue(routeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
-		SInt32 reasonVal;
-		CFNumberGetValue(reason, kCFNumberSInt32Type, &reasonVal);
-		if (reasonVal != kAudioSessionRouteChangeReason_CategoryChange)
-		{
-			if (reasonVal == kAudioSessionRouteChangeReason_OldDeviceUnavailable)
-			{			
-				if (THIS->_player->IsRunning()) {
-					[THIS pausePlayQueue];
-					[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueStopped" object:THIS];
-				}		
-			}
-
-			// stop the queue if we had a non-policy route change
-			if (THIS->_recorder->IsRunning()) {
-				[THIS stopRecord];
-			}
-		}	
-	}
-	else if (inID == kAudioSessionProperty_AudioInputAvailable)
-	{
-		if (inDataSize == sizeof(UInt32)) {
-			// disable recording if input is not available
-			THIS->_inputAvailable = *(UInt32*)inData;
-		}
-	}
-}
 				
 #pragma mark Initialization routines
 - (instancetype)init
 {
-	if ((self == [super init])) {
+	if ((self = [super init])) {
 		// Allocate our singleton instance for the recorder & player object
 		_recorder = new AQRecorder();
 		_player = new AQPlayer();
-			
-		OSStatus error = AudioSessionInitialize(NULL, NULL, interruptionListener, self);
-		if (error) printf("ERROR INITIALIZING AUDIO SESSION! %d\n", (int)error);
-		else 
-		{
-			UInt32 category = kAudioSessionCategory_PlayAndRecord;	
-			error = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
-			if (error) printf("couldn't set audio category!");
-										
-			error = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, propListener, self);
-			if (error) printf("ERROR ADDING AUDIO SESSION PROP LISTENER! %d\n", (int)error);
-			UInt32 inputAvailable = 0;
-			UInt32 size = sizeof(inputAvailable);
-			
-			// we do not want to allow recording if input is not available
-			error = AudioSessionGetProperty(kAudioSessionProperty_AudioInputAvailable, &size, &inputAvailable);
-			if (error) printf("ERROR GETTING INPUT AVAILABILITY! %d\n", (int)error);
-			self.inputAvailable = inputAvailable;
-			
-			// we also need to listen to see if input availability changes
-			error = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioInputAvailable, propListener, self);
-			if (error) printf("ERROR ADDING AUDIO SESSION PROP LISTENER! %d\n", (int)error);
 
-			error = AudioSessionSetActive(true); 
-			if (error) printf("AudioSessionSetActive (true) failed");
-		}
+		//get your app's audioSession singleton object
+		AVAudioSession* session = [AVAudioSession sharedInstance];
+
+		//error handling
+		BOOL success;
+		NSError* error;
+
+		//set the audioSession category.
+		//Needs to be Record or PlayAndRecord to use audioRouteOverride:
+		success = [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+		if (!success)  NSLog(@"AVAudioSession error setting category:%@",error);
+			
+		//set the audioSession override
+		success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+		if (!success)  NSLog(@"AVAudioSession error overrideOutputAudioPort:%@",error);
+
+		self.inputAvailable = session.inputAvailable;
+			
+		//activate the audio session
+		success = [session setActive:YES error:&error];
+		if (!success) NSLog(@"AVAudioSession error activating: %@",error);
+		else NSLog(@"audioSession active");
 		
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		[nc addObserver:self selector:@selector(playbackQueueStopped:) name:@"playbackQueueStopped" object:nil];
-		[nc addObserver:self selector:@selector(playbackQueueResumed:) name:@"playbackQueueResumed" object:nil];
+		[nc addObserver:self selector:@selector(handleInterruptNote:)  name:AVAudioSessionInterruptionNotification object:nil];
+		[nc addObserver:self selector:@selector(handleRouteNote:)	   name:AVAudioSessionRouteChangeNotification object:nil];
 		
 		// disable the play button since we have no recording to play yet
 		_playbackWasInterrupted = NO;
@@ -266,29 +199,59 @@ void propListener(	void *                  inClientData,
 	return self;
 }
 
-# pragma mark Notification routines
-- (void)playbackQueueStopped:(NSNotification *)note
+
+#pragma mark AVAudioSession Handlers
+
+- (void)handleRouteNote:(NSNotification *)note
 {
-	[self.delegate audioControllerDidStopPlayback:self];
+	NSNumber *reason = note.userInfo[AVAudioSessionRouteChangeReasonKey];
+	if (reason.intValue != kAudioSessionRouteChangeReason_CategoryChange)
+	{
+		if (reason.intValue == AVAudioSessionRouteChangeReasonOldDeviceUnavailable)
+		{
+			if (self.player->IsRunning()) {
+				[self pausePlayQueue];
+				[self.delegate audioControllerDidStopPlayback:self];
+			}
+		}
+		
+		// stop the queue if we had a non-policy route change
+		if (self.recorder->IsRunning()) {
+			[self stopRecord];
+		}
+	}
 }
 
-- (void)playbackQueueResumed:(NSNotification *)note
+- (void)handleInterruptNote:(NSNotification *)note
 {
-	[self.delegate audioControllerDidBeginPlayback:self audioQueue:_player->Queue()];
+	NSNumber *state = note.userInfo[AVAudioSessionInterruptionTypeKey];
+	if (state.intValue == AVAudioSessionInterruptionTypeBegan)
+	{
+		if (self.recorder->IsRunning()) {
+			[self stopRecord];
+		}
+		else if (self.player->IsRunning()) {
+			//the queue will stop itself on an interruption, we just need to update the UI
+			[self.delegate audioControllerDidStopPlayback:self];
+			self.playbackWasInterrupted = YES;
+		}
+	}
+	else if ((state.intValue == AVAudioSessionInterruptionTypeEnded) && self.playbackWasInterrupted)
+	{
+		// we were playing back when we were interrupted, so reset and resume now
+		self.player->StartQueue(true);
+		[self.delegate audioControllerDidBeginPlayback:self audioQueue:_player->Queue()];
+		self.playbackWasInterrupted = NO;
+	}
 }
+
 
 #pragma mark background notifications
 - (void)registerForBackgroundNotifications
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(resignActive)
-												 name:UIApplicationWillResignActiveNotification
-											   object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(enterForeground)
-												 name:UIApplicationWillEnterForegroundNotification
-											   object:nil];
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self selector:@selector(resignActive) name:UIApplicationWillResignActiveNotification object:nil];
+	[nc addObserver:self selector:@selector(enterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)resignActive
@@ -300,7 +263,8 @@ void propListener(	void *                  inClientData,
 
 - (void)enterForeground
 {
-    OSStatus error = AudioSessionSetActive(true);
+	NSError *error = nil;
+	[[AVAudioSession sharedInstance] setActive:YES error:&error];
     if (error) printf("AudioSessionSetActive (true) failed");
 	_inBackground = false;
 }
@@ -309,6 +273,8 @@ void propListener(	void *                  inClientData,
 
 - (void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	delete _player;
 	delete _recorder;
 	
