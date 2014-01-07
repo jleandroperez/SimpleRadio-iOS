@@ -10,10 +10,17 @@
 
 
 
+@interface Simperium ()
+- (void)startNetworkManagers;
+- (void)stopNetworkManagers;
+@end
+
+
 @interface SRCoreDataManager ()
 @property (readwrite, strong, nonatomic) NSManagedObjectContext			*managedObjectContext;
 @property (readwrite, strong, nonatomic) NSManagedObjectModel			*managedObjectModel;
 @property (readwrite, strong, nonatomic) NSPersistentStoreCoordinator	*persistentStoreCoordinator;
+@property (readwrite, strong, nonatomic) Simperium						*simperium;
 @end
 
 
@@ -28,6 +35,26 @@
 	
 	return _instance;
 }
+
+- (void)startupSimperiumWithAppId:(NSString*)appId APIKey:(NSString*)APIKey rootViewController:(UIViewController*)rootViewController
+{
+	self.simperium = [[Simperium alloc] initWithRootViewController:rootViewController];
+	self.simperium.authenticationEnabled = NO;
+	[self.simperium startWithAppID:appId APIKey:APIKey model:self.managedObjectModel context:self.managedObjectContext coordinator:self.persistentStoreCoordinator];
+}
+
+- (void)startNetworkingWithEmail:(NSString *)email token:(NSString *)token
+{
+    self.simperium.user = [[SPUser alloc] initWithEmail:email token:token];
+    [self.simperium performSelector:@selector(startNetworkManagers)];
+}
+
+- (void)stopNetworking
+{
+    [self.simperium performSelector:@selector(stopNetworkManagers)];
+	self.simperium.user = nil;
+}
+
 
 - (void)save {
     NSError *error = nil;
@@ -51,8 +78,8 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+//        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
 }

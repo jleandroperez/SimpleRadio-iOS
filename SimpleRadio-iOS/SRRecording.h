@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <Simperium/SPManagedObject.h>
 
 
 
-@interface SRRecording : NSManagedObject
+@interface SRRecording : SPManagedObject
 @property (nonatomic, retain) NSDate	*timeStamp;
 @property (nonatomic, retain) NSData	*audio;
 @property (nonatomic, retain) NSString	*audioInfo;

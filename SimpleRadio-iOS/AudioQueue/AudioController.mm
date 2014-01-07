@@ -234,7 +234,7 @@ char *OSTypeToStr(char *buf, OSType t)
 		
 		// stop the queue if we had a non-policy route change
 		if (self.recorder->IsRunning()) {
-			[self stopRecord];
+			[self stopRecording];
 		}
 	}
 }
@@ -245,7 +245,7 @@ char *OSTypeToStr(char *buf, OSType t)
 	if (state.intValue == AVAudioSessionInterruptionTypeBegan)
 	{
 		if (self.recorder->IsRunning()) {
-			[self stopRecord];
+			[self stopRecording];
 		}
 		else if (self.player->IsRunning()) {
 			//the queue will stop itself on an interruption, we just need to update the UI
@@ -264,7 +264,7 @@ char *OSTypeToStr(char *buf, OSType t)
 
 - (void)resignActive
 {
-    if (_recorder->IsRunning()) [self stopRecord];
+    if (_recorder->IsRunning()) [self stopRecording];
     if (_player->IsRunning()) [self stopPlayback];
     _inBackground = true;
 }

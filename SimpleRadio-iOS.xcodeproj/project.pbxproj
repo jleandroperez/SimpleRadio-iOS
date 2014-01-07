@@ -32,6 +32,12 @@
 		B54F9FCE186DFE4900324EFE /* SimpleRadio_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F9FCD186DFE4900324EFE /* SimpleRadio_iOSTests.m */; };
 		B54F9FE7186DFF8200324EFE /* libSimperium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9FDF186DFF5D00324EFE /* libSimperium.a */; };
 		B59E81201875F8EB005ADDCF /* AudioController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B59E811F1875F8EB005ADDCF /* AudioController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5CCFECA187C8CB2006BF5CF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CCFEC9187C8CB2006BF5CF /* SystemConfiguration.framework */; };
+		B5CCFECF187C8CBC006BF5CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CCFECE187C8CBC006BF5CF /* MobileCoreServices.framework */; };
+		B5CCFED1187C8CC3006BF5CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CCFED0187C8CC3006BF5CF /* CFNetwork.framework */; };
+		B5CCFED3187C8CC9006BF5CF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CCFED2187C8CC9006BF5CF /* Security.framework */; };
+		B5CCFED5187C8CCE006BF5CF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CCFED4187C8CCE006BF5CF /* libz.dylib */; };
+		B5CCFED7187C8CD7006BF5CF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CCFED6187C8CD7006BF5CF /* libicucore.dylib */; };
 		B5F4511C1871FD3400C4EA02 /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451171871FD3400C4EA02 /* AQPlayer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5F4511D1871FD3400C4EA02 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5F451191871FD3400C4EA02 /* AQRecorder.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5F4511E1871FD3400C4EA02 /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4511A1871FD3400C4EA02 /* MeterTable.cpp */; };
@@ -119,6 +125,12 @@
 		B54F9FD7186DFF5D00324EFE /* Simperium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simperium.xcodeproj; path = "Frameworks/simperium-ios/Simperium.xcodeproj"; sourceTree = "<group>"; };
 		B59E811E1875F8EB005ADDCF /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
 		B59E811F1875F8EB005ADDCF /* AudioController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioController.mm; sourceTree = "<group>"; };
+		B5CCFEC9187C8CB2006BF5CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B5CCFECE187C8CBC006BF5CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B5CCFED0187C8CC3006BF5CF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B5CCFED2187C8CC9006BF5CF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B5CCFED4187C8CCE006BF5CF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B5CCFED6187C8CD7006BF5CF /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		B5F451161871FD3400C4EA02 /* AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQPlayer.h; sourceTree = "<group>"; };
 		B5F451171871FD3400C4EA02 /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQPlayer.mm; sourceTree = "<group>"; };
 		B5F451181871FD3400C4EA02 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQRecorder.h; sourceTree = "<group>"; };
@@ -149,6 +161,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CCFED7187C8CD7006BF5CF /* libicucore.dylib in Frameworks */,
+				B5CCFED5187C8CCE006BF5CF /* libz.dylib in Frameworks */,
+				B5CCFED3187C8CC9006BF5CF /* Security.framework in Frameworks */,
+				B5CCFED1187C8CC3006BF5CF /* CFNetwork.framework in Frameworks */,
+				B5CCFECF187C8CBC006BF5CF /* MobileCoreServices.framework in Frameworks */,
+				B5CCFECA187C8CB2006BF5CF /* SystemConfiguration.framework in Frameworks */,
 				B5F4513D1871FE7300C4EA02 /* AudioToolbox.framework in Frameworks */,
 				B5F4513B1871FE6100C4EA02 /* CoreAudio.framework in Frameworks */,
 				B5073EB21871969900B84ADE /* QuartzCore.framework in Frameworks */,
@@ -198,6 +216,12 @@
 		B54F9F98186DFE4900324EFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5CCFED6187C8CD7006BF5CF /* libicucore.dylib */,
+				B5CCFED4187C8CCE006BF5CF /* libz.dylib */,
+				B5CCFED2187C8CC9006BF5CF /* Security.framework */,
+				B5CCFED0187C8CC3006BF5CF /* CFNetwork.framework */,
+				B5CCFECE187C8CBC006BF5CF /* MobileCoreServices.framework */,
+				B5CCFEC9187C8CB2006BF5CF /* SystemConfiguration.framework */,
 				B5F4513C1871FE7300C4EA02 /* AudioToolbox.framework */,
 				B5F4513A1871FE6100C4EA02 /* CoreAudio.framework */,
 				B5073EB11871969900B84ADE /* QuartzCore.framework */,
@@ -640,6 +664,7 @@
 				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "SimpleRadio-iOS/SimpleRadio-iOS-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -657,6 +682,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleRadio-iOS/SimpleRadio-iOS-Prefix.pch";
 				INFOPLIST_FILE = "SimpleRadio-iOS/SimpleRadio-iOS-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Recording" representedClassName="SRRecording">
+    <entity name="SPManagedObject" representedClassName="SPManagedObject" syncable="YES">
+        <attribute name="ghostData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="simperiumKey" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SRRecording" representedClassName="SRRecording" parentEntity="SPManagedObject" syncable="YES">
         <attribute name="audio" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
         <attribute name="audioInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
-        <userInfo/>
     </entity>
     <elements>
-        <element name="Recording" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SRRecording" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SPManagedObject" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

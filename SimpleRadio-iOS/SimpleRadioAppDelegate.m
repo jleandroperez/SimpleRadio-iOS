@@ -10,11 +10,16 @@
 #import "SRCoreDataManager.h"
 
 
+NSString* const SimpleRadioAppId	= @"";
+NSString* const SimpleRadioAPIKey	= @"";
+
 
 @implementation SimpleRadioAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[[SRCoreDataManager sharedInstance] startupSimperiumWithAppId:SimpleRadioAppId APIKey:SimpleRadioAPIKey rootViewController:self.window.rootViewController];
+	
     return YES;
 }
 							
