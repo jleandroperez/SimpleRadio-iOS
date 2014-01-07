@@ -49,8 +49,46 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 
 
 #include "AQPlayer.h"
+#import <AudioToolbox/ExtendedAudioFile.h>
 
 #define kBufferDurationSeconds .5
+
+
+
+#pragma mark AudioFileOpenWithCallbacks Helpers
+
+static OSStatus readProc(void* clientData, SInt64 position, UInt32 requestCount, void* buffer, UInt32* actualCount)
+{
+	NSData *inAudioData = (NSData *) clientData;
+	
+    size_t dataSize = inAudioData.length;
+    size_t bytesToRead = 0;
+	
+    if(position < dataSize) {
+        size_t bytesAvailable = (size_t) (dataSize - position);
+        bytesToRead = requestCount <= bytesAvailable ? requestCount : bytesAvailable;
+		
+        [inAudioData getBytes: buffer range:NSMakeRange((NSUInteger)position, (NSUInteger)bytesToRead)];
+    } else {
+        NSLog(@"data was not read \n");
+        bytesToRead = 0;
+    }
+	
+    if(actualCount)
+        *actualCount = bytesToRead;
+	
+    return noErr;
+}
+
+static SInt64 getSizeProc(void* clientData)
+{
+    NSData *inAudioData = (NSData *) clientData;
+    size_t dataSize = inAudioData.length;
+    return dataSize;
+}
+
+
+#pragma mark AQPlayer Implementation
 
 void AQPlayer::AQBufferCallback(void *					inUserData,
 								AudioQueueRef			inAQ,
@@ -132,23 +170,25 @@ void AQPlayer::CalculateBytesForTime (CAStreamBasicDescription & inDesc, UInt32 
 AQPlayer::AQPlayer() :
 	mQueue(0),
 	mAudioFile(0),
-	mFilePath(NULL),
 	mIsRunning(false),
 	mIsInitialized(false),
 	mNumPacketsToRead(0),
 	mCurrentPacket(0),
 	mIsDone(false),
-	mIsLooping(false) { }
+	mIsLooping(false), mAudioData(nil) { }
 
 AQPlayer::~AQPlayer() 
 {
+	[mAudioData release];
+	mAudioData = nil;
+	
 	DisposeQueue(true);
 }
 
 OSStatus AQPlayer::StartQueue(BOOL inResume)
 {	
 	// if we have a file but no queue, create one now
-	if ((mQueue == NULL) && (mFilePath != NULL)) CreateQueueForFile(mFilePath);
+	if (mQueue == NULL) CreateQueueWithData(mAudioData);
 	
 	mIsDone = false;
 	
@@ -181,26 +221,19 @@ OSStatus AQPlayer::PauseQueue()
 	return result;
 }
 
-void AQPlayer::CreateQueueForFile(CFStringRef inFilePath) 
-{	
-	CFURLRef sndFile = NULL; 
-
+void AQPlayer::CreateQueueWithData(NSData *audioData)
+{
 	try {
-		if (mFilePath == NULL)
-		{
 			mIsLooping = false;
 			
-			sndFile = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, inFilePath, kCFURLPOSIXPathStyle, false);
-			if (!sndFile) { printf("can't parse file path\n"); return; }
-			
-            OSStatus rc = AudioFileOpenURL (sndFile, kAudioFileReadPermission, 0/*inFileTypeHint*/, &mAudioFile);
-            CFRelease(sndFile); // release sndFile here to quiet analyzer
-			XThrowIfError(rc, "can't open file");
-             
+			OSStatus result = AudioFileOpenWithCallbacks(audioData, readProc, 0, getSizeProc, 0, kAudioFileMP3Type, &mAudioFile);
+			if(result != noErr){
+				NSLog(@"problem in theAudioFileReaderWithData function: result code %ld", result);
+			}
+					
 			UInt32 size = sizeof(mDataFormat);
 			XThrowIfError(AudioFileGetProperty(mAudioFile, kAudioFilePropertyDataFormat, &size, &mDataFormat), "couldn't get file's data format");
-			mFilePath = CFStringCreateCopy(kCFAllocatorDefault, inFilePath);
-		}
+
 		SetupNewQueue();		
     }
 	catch (CAXException e) {
@@ -279,11 +312,6 @@ void AQPlayer::DisposeQueue(Boolean inDisposeFile)
 		{		
 			AudioFileClose(mAudioFile);
 			mAudioFile = 0;
-		}
-		if (mFilePath)
-		{
-			CFRelease(mFilePath);
-			mFilePath = NULL;
 		}
 	}
 	mIsInitialized = false;

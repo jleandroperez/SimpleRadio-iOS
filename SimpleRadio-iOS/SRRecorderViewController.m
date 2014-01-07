@@ -21,6 +21,8 @@
 @property (nonatomic, weak)		IBOutlet AQLevelMeter	*meter;
 @property (nonatomic, weak)		IBOutlet UIButton		*recordButton;
 @property (nonatomic, strong)	AudioController			*controller;
+
+@property (nonatomic, strong)	NSData *hack;
 @end
 
 
@@ -31,12 +33,24 @@
     [super viewDidLoad];
 	self.title = NSLocalizedString(@"Recorder", nil);
 	
+	// Tune UI
 	UIColor *bgColor = [[UIColor alloc] initWithRed:.39 green:.44 blue:.57 alpha:.5];
 	self.meter.backgroundColor = bgColor;
 	self.meter.borderColor = bgColor;
 
+	// Setup AudioController
 	self.controller = [[AudioController alloc] init];
 	self.controller.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+
+	self.meter.aq = nil;
+	
+	[self.controller stopPlayback];
+	[self.controller stopRecording];
 }
 
 
@@ -51,9 +65,10 @@
 
 - (void)audioControllerDidStopRecording:(AudioController *)audioController audioData:(NSData *)audioData
 {
-	NSLog(@"Done Recording %ld", audioData.length);
 	[self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
 	self.meter.aq = nil;
+	
+	self.hack = audioData;
 }
 
 - (void)audioControllerDidBeginPlayback:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue
@@ -72,12 +87,12 @@
 
 - (IBAction)btnPlayPressed:(id)sender
 {
-	[self.controller play];
+	[self.controller startPlayback:self.hack];
 }
 
 - (IBAction)btnRecordPressed:(id)sender
 {
-	[self.controller record];
+	[self.controller startRecording];
 }
 
 

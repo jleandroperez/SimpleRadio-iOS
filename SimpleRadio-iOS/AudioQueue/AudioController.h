@@ -67,7 +67,10 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 
 @property (nonatomic, assign) id<AudioControllerDelegate> delegate;
 
-- (void)play;
-- (void)record;
+- (void)startPlayback:(NSData *)data;
+- (void)stopPlayback;
+
+- (void)startRecording;
+- (void)stopRecording;
 
 @end

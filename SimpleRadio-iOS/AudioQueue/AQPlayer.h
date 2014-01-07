@@ -68,11 +68,11 @@ class AQPlayer
 		CAStreamBasicDescription		DataFormat() const		{ return mDataFormat; }		
 		Boolean							IsRunning()	const		{ return (mIsRunning) ? true : false; }
 		Boolean							IsInitialized()	const	{ return mIsInitialized; }		
-		CFStringRef						GetFilePath() const		{ return (mFilePath) ? mFilePath : CFSTR(""); }
 		Boolean							IsLooping() const		{ return mIsLooping; }
 		
+		void SetAudioData(NSData *audioData)    { [mAudioData release]; mAudioData = [audioData retain]; }
 		void SetLooping(Boolean inIsLooping)	{ mIsLooping = inIsLooping; }
-		void CreateQueueForFile(CFStringRef inFilePath);
+		void CreateQueueWithData(NSData *audioData);
 		void DisposeQueue(Boolean inDisposeFile);	
 										
 	private:
@@ -83,10 +83,10 @@ class AQPlayer
 		
 		void							SetupNewQueue();
 		
+		NSData*							mAudioData;
 		AudioQueueRef					mQueue;
 		AudioQueueBufferRef				mBuffers[kNumberBuffers];
 		AudioFileID						mAudioFile;
-		CFStringRef						mFilePath;
 		CAStreamBasicDescription		mDataFormat;
 		Boolean							mIsInitialized;
 		UInt32							mNumPacketsToRead;

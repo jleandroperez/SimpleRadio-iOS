@@ -86,8 +86,14 @@ char *OSTypeToStr(char *buf, OSType t)
 }
 
 #pragma mark Playback routines
-- (void)play
+- (void)startPlayback:(NSData *)data
 {
+	if (!data) {
+		return;
+	}
+	
+	_player->SetAudioData(data);
+	
 	if (_player->IsRunning())
 	{
 		if (_playbackWasPaused) {
@@ -98,16 +104,13 @@ char *OSTypeToStr(char *buf, OSType t)
 			}
 		}
 		else {
-			[self stopPlayQueue];
+			[self stopPlayback];
 		}
 	}
 	else
 	{
 		// dispose the previous playback queue
 		_player->DisposeQueue(true);
-		
-		CFStringRef recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.aac"];
-		_player->CreateQueueForFile(recordFilePath);
 		
 		OSStatus result = _player->StartQueue(false);
 		if (result == noErr) {
@@ -122,19 +125,24 @@ char *OSTypeToStr(char *buf, OSType t)
 	_playbackWasPaused = YES;
 }
 
--(void)stopPlayQueue
+-(void)stopPlayback
 {
+	if (_player->IsRunning() == NO)
+	{
+		return;
+	}
+	
 	_player->StopQueue();
 	[self.delegate audioControllerDidStopPlayback:self];
 }
 
 
 #pragma mark Record routines
-- (void)record
+- (void)startRecording
 {
 	if (_recorder->IsRunning()) // If we are currently recording, stop and save the file.
 	{
-		[self stopRecord];
+		[self stopRecording];
 	}
 	else // If we're not recording, start.
 	{
@@ -143,8 +151,13 @@ char *OSTypeToStr(char *buf, OSType t)
 	}	
 }
 
-- (void)stopRecord
+- (void)stopRecording
 {
+	if (_recorder->IsRunning() == NO)
+	{
+		return;
+	}
+	
 	_recorder->StopRecord();
 		
 	// Return the audio recording
@@ -252,7 +265,7 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)resignActive
 {
     if (_recorder->IsRunning()) [self stopRecord];
-    if (_player->IsRunning()) [self stopPlayQueue];
+    if (_player->IsRunning()) [self stopPlayback];
     _inBackground = true;
 }
 
