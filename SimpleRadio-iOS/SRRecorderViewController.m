@@ -11,19 +11,17 @@
 #import "AudioController.h"
 #import "SRCoreDataManager.h"
 #import "SRRecording.h"
+#import "UIAlertView+Blocks.h"
 
 
 
-@interface SRRecorderViewController () <NSFetchedResultsControllerDelegate>
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@interface SRRecorderViewController () <NSFetchedResultsControllerDelegate, AudioControllerDelegate>
+@property (nonatomic, weak)		IBOutlet UITableView		*tableView;
+@property (nonatomic, weak)		IBOutlet AQLevelMeter		*meter;
+@property (nonatomic, weak)		IBOutlet UIButton			*recordButton;
+@property (nonatomic, strong)	AudioController				*controller;
+@property (nonatomic, strong)	NSFetchedResultsController	*fetchedResultsController;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-@end
-
-@interface SRRecorderViewController () <AudioControllerDelegate>
-@property (nonatomic, weak)		IBOutlet UITableView	*tableView;
-@property (nonatomic, weak)		IBOutlet AQLevelMeter	*meter;
-@property (nonatomic, weak)		IBOutlet UIButton		*recordButton;
-@property (nonatomic, strong)	AudioController			*controller;
 @end
 
 
@@ -60,24 +58,38 @@
 
 - (void)audioControllerDidBeginRecording:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue
 {
-	[self.recordButton setTitle:@"Done" forState:UIControlStateNormal];
+	[self.recordButton setTitle:@"Done Recording" forState:UIControlStateNormal];
 	self.meter.aq = audioQueue;
 }
 
 - (void)audioControllerDidStopRecording:(AudioController *)audioController audioData:(NSData *)audioData
 {
 	// Disable Meter
-	[self.recordButton setTitle:@"Record" forState:UIControlStateNormal];
+	[self.recordButton setTitle:@"Start Recording" forState:UIControlStateNormal];
 	self.meter.aq = nil;
 	
-	// Insert + Save
-	NSManagedObjectContext *context = [[SRCoreDataManager sharedInstance] managedObjectContext];
-	SRRecording *recording = (SRRecording *)[NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SRRecording class]) inManagedObjectContext:context];
+	// AlertView Handler
+	UIAlertViewCompletion completion = ^(UIAlertView* alertView, NSUInteger buttonIndex) {
+		
+		if (buttonIndex == 0) {
+			return;
+		}
+		
+		NSString *details = [[alertView textFieldAtIndex:0] text];
+		[self insertAudioData:audioData details:details];
+	};
 
-	recording.audio = audioData;
-	recording.timeStamp = [NSDate date];
+	// Ask for confirmation before saving
+	NSString *title				= @"New Recording";
+	NSString *message			= @"Enter a name for this recording";
+	NSString *cancelButtonTitle = @"Cancel";
+	NSArray *otherButtonTitles	= @[ @"OK" ];
+	NSString *textPlaceholder	= [self newRecordingDetails];
 	
-	[[SRCoreDataManager sharedInstance] save];
+	UIAlertView* av = [[UIAlertView alloc] initWithTitle:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles completion:completion];
+	av.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[[av textFieldAtIndex:0] setText:textPlaceholder];
+    [av show];
 }
 
 - (void)audioControllerDidBeginPlayback:(AudioController *)audioController audioQueue:(AudioQueueRef)audioQueue
@@ -92,12 +104,29 @@
 
 
 #pragma mark -
-#pragma mark Button Delegates
+#pragma mark Helpers
 
-- (IBAction)btnPlayPressed:(id)sender
+- (void)insertAudioData:(NSData *)audioData details:(NSString *)details
 {
-	[self.controller startPlayback:nil];
+	NSManagedObjectContext *context = [[SRCoreDataManager sharedInstance] managedObjectContext];
+	SRRecording *recording = (SRRecording *)[NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SRRecording class]) inManagedObjectContext:context];
+	
+	recording.audio		= audioData;
+	recording.timeStamp = [NSDate date];
+	recording.details	= (details.length > 0) ? details : [self newRecordingDetails];
+	
+	[[SRCoreDataManager sharedInstance] save];
 }
+
+- (NSString *)newRecordingDetails
+{
+	NSString *shortDate = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+	return [NSString stringWithFormat:@"Recording %@", shortDate];
+}
+
+
+#pragma mark -
+#pragma mark Button Delegates
 
 - (IBAction)btnRecordPressed:(id)sender
 {
@@ -122,12 +151,12 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 	[self configureCell:cell atIndexPath:indexPath];
-    return cell;
+
+	return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
@@ -138,15 +167,19 @@
         [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
 
         NSError *error = nil;
-        if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        if (![context save:&error])
+		{
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SRRecording *object = (SRRecording *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+	[self.controller startPlayback:object.audio];
+}
 
 #pragma mark - Fetched results controller
 
@@ -225,10 +258,17 @@
     [self.tableView endUpdates];
 }
 
+
+#pragma mark UI Helpers
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     SRRecording *object = (SRRecording *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = object.timeStamp.description;
+    cell.textLabel.text = object.details;
+	
+//	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn_play"]];
+	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn_pause"]];
+	cell.accessoryView = imageView;
 }
 
 @end

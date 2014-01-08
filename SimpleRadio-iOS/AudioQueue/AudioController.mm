@@ -161,9 +161,14 @@ char *OSTypeToStr(char *buf, OSType t)
 	_recorder->StopRecord();
 		
 	// Return the audio recording
-	NSString *recordFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.aac"];
-	NSData *audioData = [NSData dataWithContentsOfFile:recordFilePath];
-	[self.delegate audioControllerDidStopRecording:self audioData:audioData];
+	double delayInSeconds = 0.1f;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		
+		NSString *recordFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.aac"];
+		NSData *audioData = [NSData dataWithContentsOfFile:recordFilePath];
+		[self.delegate audioControllerDidStopRecording:self audioData:audioData];
+	});
 }
 
 				

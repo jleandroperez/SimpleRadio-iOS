@@ -13,6 +13,7 @@
 		B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EB41871995800B84ADE /* SRCoreDataManager.m */; };
 		B5073EB81871B46C00B84ADE /* SRRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EB71871B46C00B84ADE /* SRRecorderViewController.m */; };
 		B5073EC11871B87600B84ADE /* SRRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EC01871B87600B84ADE /* SRRecording.m */; };
+		B507D7FE187DA96A00E846CA /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B507D7FD187DA96A00E846CA /* UIAlertView+Blocks.m */; };
 		B54F9F9A186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
 		B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */; };
 		B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9D186DFE4900324EFE /* UIKit.framework */; };
@@ -101,6 +102,8 @@
 		B5073EB71871B46C00B84ADE /* SRRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderViewController.m; sourceTree = "<group>"; };
 		B5073EBF1871B87600B84ADE /* SRRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecording.h; sourceTree = "<group>"; };
 		B5073EC01871B87600B84ADE /* SRRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecording.m; sourceTree = "<group>"; };
+		B507D7FC187DA96A00E846CA /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		B507D7FD187DA96A00E846CA /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleRadio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54F9F99186DFE4900324EFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,6 +196,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B507D7FB187DA96A00E846CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B507D7FC187DA96A00E846CA /* UIAlertView+Blocks.h */,
+				B507D7FD187DA96A00E846CA /* UIAlertView+Blocks.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B54F9F8D186DFE4900324EFE = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 				B5F451151871FD3400C4EA02 /* AudioQueue */,
 				B5F451221871FD5900C4EA02 /* AudioViews */,
 				B5F4512F1871FE3200C4EA02 /* PublicUtility */,
+				B507D7FB187DA96A00E846CA /* Extensions */,
 				B54F9FEA186E001100324EFE /* Model */,
 				B54F9FE8186DFFEE00324EFE /* ViewControllers */,
 				B54F9FA2186DFE4900324EFE /* Supporting Files */,
@@ -524,6 +537,7 @@
 				B5073EB81871B46C00B84ADE /* SRRecorderViewController.m in Sources */,
 				B59E81201875F8EB005ADDCF /* AudioController.mm in Sources */,
 				B5073EB51871995800B84ADE /* SRCoreDataManager.m in Sources */,
+				B507D7FE187DA96A00E846CA /* UIAlertView+Blocks.m in Sources */,
 				B5F4512D1871FD5900C4EA02 /* LevelMeter.m in Sources */,
 				B5F4512C1871FD5900C4EA02 /* GLLevelMeter.m in Sources */,
 			);

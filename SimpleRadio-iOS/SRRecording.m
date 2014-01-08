@@ -11,6 +11,7 @@
 
 
 @implementation SRRecording
+@dynamic details;
 @dynamic timeStamp;
 @dynamic audio;
 @dynamic audioInfo;

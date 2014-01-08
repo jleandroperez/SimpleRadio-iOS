@@ -13,6 +13,7 @@
 
 
 @interface SRRecording : SPManagedObject
+@property (nonatomic, retain) NSString	*details;
 @property (nonatomic, retain) NSDate	*timeStamp;
 @property (nonatomic, retain) NSData	*audio;
 @property (nonatomic, retain) NSString	*audioInfo;

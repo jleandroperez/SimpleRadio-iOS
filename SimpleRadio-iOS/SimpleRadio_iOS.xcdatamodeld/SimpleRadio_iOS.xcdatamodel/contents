@@ -7,12 +7,13 @@
     <entity name="SRRecording" representedClassName="SRRecording" parentEntity="SPManagedObject" syncable="YES">
         <attribute name="audio" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
         <attribute name="audioInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
     </entity>
     <elements>
-        <element name="SRRecording" positionX="0" positionY="0" width="0" height="0"/>
         <element name="SPManagedObject" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SRRecording" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -162,7 +162,7 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
 	memset(&mRecordFormat, 0, sizeof(mRecordFormat));
 
 	mRecordFormat.mSampleRate = [[AVAudioSession sharedInstance] sampleRate];
-	mRecordFormat.mChannelsPerFrame = [[AVAudioSession sharedInstance] inputNumberOfChannels];
+	mRecordFormat.mChannelsPerFrame = (UInt32)[[AVAudioSession sharedInstance] inputNumberOfChannels];
 			
 	mRecordFormat.mFormatID = inFormatID;
 	if (inFormatID == kAudioFormatLinearPCM)

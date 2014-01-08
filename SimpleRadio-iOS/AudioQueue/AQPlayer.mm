@@ -75,7 +75,7 @@ static OSStatus readProc(void* clientData, SInt64 position, UInt32 requestCount,
     }
 	
     if(actualCount)
-        *actualCount = bytesToRead;
+        *actualCount = (UInt32)bytesToRead;
 	
     return noErr;
 }
@@ -228,7 +228,7 @@ void AQPlayer::CreateQueueWithData(NSData *audioData)
 			
 			OSStatus result = AudioFileOpenWithCallbacks(audioData, readProc, 0, getSizeProc, 0, kAudioFileMP3Type, &mAudioFile);
 			if(result != noErr){
-				NSLog(@"problem in theAudioFileReaderWithData function: result code %ld", result);
+				NSLog(@"problem in theAudioFileReaderWithData function: result code %d", (int)result);
 			}
 					
 			UInt32 size = sizeof(mDataFormat);
