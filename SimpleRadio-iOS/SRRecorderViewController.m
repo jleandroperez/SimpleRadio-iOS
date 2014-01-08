@@ -12,16 +12,21 @@
 #import "SRCoreDataManager.h"
 #import "SRRecording.h"
 #import "UIAlertView+Blocks.h"
+#import "SRRecordingCell.h"
 
 
 
 @interface SRRecorderViewController () <NSFetchedResultsControllerDelegate, AudioControllerDelegate>
+
 @property (nonatomic, weak)		IBOutlet UITableView		*tableView;
 @property (nonatomic, weak)		IBOutlet AQLevelMeter		*meter;
 @property (nonatomic, weak)		IBOutlet UIButton			*recordButton;
 @property (nonatomic, strong)	AudioController				*controller;
 @property (nonatomic, strong)	NSFetchedResultsController	*fetchedResultsController;
+@property (nonatomic, strong)	NSString					*playingSimperiumKey;
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 
@@ -99,7 +104,9 @@
 
 - (void)audioControllerDidStopPlayback:(AudioController *)audioController
 {
-	self.meter.aq = nil;	
+	self.meter.aq = nil;
+	self.playingSimperiumKey = nil;
+	[self.tableView reloadData];
 }
 
 
@@ -130,6 +137,10 @@
 
 - (IBAction)btnRecordPressed:(id)sender
 {
+	// Just in case, stop any playback
+	[self.controller stopPlayback];
+	
+	// startRecording will stop, if anything else was in course
 	[self.controller startRecording];
 }
 
@@ -177,11 +188,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	// Stop previous playback
+	[self.controller stopPlayback];
+	
+	// Start playing!
     SRRecording *object = (SRRecording *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	[self.controller startPlayback:object.audio];
+	self.playingSimperiumKey = object.simperiumKey;
+	
+	// Refresh UI
+	[tableView reloadData];
 }
 
-#pragma mark - Fetched results controller
+
+#pragma mark - 
+#pragma mark Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -259,16 +280,14 @@
 }
 
 
+#pragma mark -
 #pragma mark UI Helpers
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(SRRecordingCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     SRRecording *object = (SRRecording *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = object.details;
-	
-//	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn_play"]];
-	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn_pause"]];
-	cell.accessoryView = imageView;
+	cell.playing		= [object.simperiumKey isEqualToString:self.playingSimperiumKey];
 }
 
 @end

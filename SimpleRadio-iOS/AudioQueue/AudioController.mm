@@ -218,10 +218,16 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)registerForNotifications
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self selector:@selector(handleInterruptNote:)  name:AVAudioSessionInterruptionNotification object:nil];
-	[nc addObserver:self selector:@selector(handleRouteNote:)	   name:AVAudioSessionRouteChangeNotification object:nil];
-	[nc addObserver:self selector:@selector(resignActive) name:UIApplicationWillResignActiveNotification object:nil];
-	[nc addObserver:self selector:@selector(enterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+	[nc addObserver:self selector:@selector(handlePlaybackStoppedNote:)	name:@"playbackQueueStopped"						object:nil];
+	[nc addObserver:self selector:@selector(handleInterruptNote:)		name:AVAudioSessionInterruptionNotification			object:nil];
+	[nc addObserver:self selector:@selector(handleRouteNote:)			name:AVAudioSessionRouteChangeNotification			object:nil];
+	[nc addObserver:self selector:@selector(resignActive)				name:UIApplicationWillResignActiveNotification		object:nil];
+	[nc addObserver:self selector:@selector(enterForeground)			name:UIApplicationWillEnterForegroundNotification	object:nil];
+}
+
+- (void)handlePlaybackStoppedNote:(NSNotification *)note
+{
+	[self.delegate audioControllerDidStopPlayback:self];	
 }
 
 - (void)handleRouteNote:(NSNotification *)note

@@ -14,6 +14,7 @@
 		B5073EB81871B46C00B84ADE /* SRRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EB71871B46C00B84ADE /* SRRecorderViewController.m */; };
 		B5073EC11871B87600B84ADE /* SRRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B5073EC01871B87600B84ADE /* SRRecording.m */; };
 		B507D7FE187DA96A00E846CA /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B507D7FD187DA96A00E846CA /* UIAlertView+Blocks.m */; };
+		B507D801187DC06B00E846CA /* SRRecordingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B507D800187DC06B00E846CA /* SRRecordingCell.m */; };
 		B54F9F9A186DFE4900324EFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F99186DFE4900324EFE /* Foundation.framework */; };
 		B54F9F9C186DFE4900324EFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */; };
 		B54F9F9E186DFE4900324EFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54F9F9D186DFE4900324EFE /* UIKit.framework */; };
@@ -104,6 +105,8 @@
 		B5073EC01871B87600B84ADE /* SRRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecording.m; sourceTree = "<group>"; };
 		B507D7FC187DA96A00E846CA /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		B507D7FD187DA96A00E846CA /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		B507D7FF187DC06B00E846CA /* SRRecordingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecordingCell.h; sourceTree = "<group>"; };
+		B507D800187DC06B00E846CA /* SRRecordingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecordingCell.m; sourceTree = "<group>"; };
 		B54F9F96186DFE4900324EFE /* SimpleRadio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleRadio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54F9F99186DFE4900324EFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B54F9F9B186DFE4900324EFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -321,6 +324,8 @@
 				B5073EAF187195F900B84ADE /* SRScannerViewController.m */,
 				B5073EB61871B46C00B84ADE /* SRRecorderViewController.h */,
 				B5073EB71871B46C00B84ADE /* SRRecorderViewController.m */,
+				B507D7FF187DC06B00E846CA /* SRRecordingCell.h */,
+				B507D800187DC06B00E846CA /* SRRecordingCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 				B5F451371871FE3200C4EA02 /* CADebugMacros.cpp in Sources */,
 				B5F4511C1871FD3400C4EA02 /* AQPlayer.mm in Sources */,
 				B5F4512B1871FD5900C4EA02 /* AQLevelMeter.mm in Sources */,
+				B507D801187DC06B00E846CA /* SRRecordingCell.m in Sources */,
 				B54F9FAC186DFE4900324EFE /* SimpleRadioAppDelegate.m in Sources */,
 				B5073EC11871B87600B84ADE /* SRRecording.m in Sources */,
 				B5F4511E1871FD3400C4EA02 /* MeterTable.cpp in Sources */,
