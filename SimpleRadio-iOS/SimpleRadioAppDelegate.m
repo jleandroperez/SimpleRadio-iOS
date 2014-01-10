@@ -10,8 +10,8 @@
 #import "SRCoreDataManager.h"
 
 
-NSString* const SimpleRadioAppId	= @"";
-NSString* const SimpleRadioAPIKey	= @"";
+NSString* const SimpleRadioAppId	= @"chattel-conductors-ee0";
+NSString* const SimpleRadioAPIKey	= @"0b53a4501ee343cda5f1fb030ab5550a";
 
 
 @implementation SimpleRadioAppDelegate
