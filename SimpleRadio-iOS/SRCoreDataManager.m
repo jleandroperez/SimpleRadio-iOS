@@ -39,7 +39,7 @@
 - (void)startupSimperiumWithAppId:(NSString*)appId APIKey:(NSString*)APIKey rootViewController:(UIViewController*)rootViewController
 {
 	self.simperium = [[Simperium alloc] initWithRootViewController:rootViewController];
-	self.simperium.authenticationEnabled = NO;
+//	self.simperium.authenticationEnabled = NO;
 	[self.simperium startWithAppID:appId APIKey:APIKey model:self.managedObjectModel context:self.managedObjectContext coordinator:self.persistentStoreCoordinator];
 }
 

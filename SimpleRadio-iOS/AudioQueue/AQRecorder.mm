@@ -120,6 +120,7 @@ AQRecorder::AQRecorder()
 {
 	mIsRunning = false;
 	mRecordPacket = 0;
+	mFileName = nil;
 }
 
 AQRecorder::~AQRecorder()
